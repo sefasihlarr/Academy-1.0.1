@@ -1,0 +1,17 @@
+﻿@model AppRoleListModel
+
+
+@foreach (var item in Model.Roles)
+{
+    <div>
+        @if (item!=null)
+        {
+
+            <label><input type="checkbox" value="@item.Name" name="roleNames" checked>@item.Name</label>
+        }
+        else
+        {
+            <label><input type="checkbox" value="@item.Name" name="roleNames">@item.Name</label>
+        }
+    </div>
+}

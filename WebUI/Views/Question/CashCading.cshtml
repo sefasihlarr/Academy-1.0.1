@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "CashCading";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="col-6 offset-3">
+        <form  method="post">
+            <div class="form-group">
+                <label>Sınıf</label>
+                <select class="form-dropdown" id="Class">
+                    <option>--Ders Seçin--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Ders</label>
+                <select class="form-control" id="Lesson">
+                    <option>--Ders Seçin--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Konu</label>
+                <select class="form-control" id="Subject">
+                    <option>--Konu Seçin--</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            alert('ok');
+            GetClass();
+            $('#Class').change(function(){
+                var id=$(this).val();
+                $('#Lesson').empty();
+                $('#Lesson').append('<option>--Ders seciniz--</option>');
+                $.ajax({
+                    url:'/Question/Lesson?id='+id,
+                    success:function(result){
+                        $.each(result,function(i,data){
+                            $('#Lesson').append('<option value='+data.id+'>'+data.name+'</option>');
+                        });
+                    }
+                });
+            });
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
+}

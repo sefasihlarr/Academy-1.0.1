@@ -1,0 +1,192 @@
+﻿@model SubjectListModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetClass();
+            $('#Class').change(function () {
+                var id = $(this).val();
+                $('#Lesson').empty();
+                $('#Lesson').append('<option>--Ders seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Lesson?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Lesson').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $('#Lesson').change(function () {
+                var id = $(this).val();
+                $('#Subject').empty();
+                $('#Subject').append('<option>--Konu seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Subject?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Subject').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
+}
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Konular Sayfası</h1>
+
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+
+                        <div class="card flex-fill col-sm-9" style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Konular</h5>
+                            </div>
+                            <table class="table my-0 text-center">
+                                <thead>
+
+                                    <button id="myBtn" class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
+                                        <strong style="width:50%;">Yeni Konu Ekle </strong>
+                                    </button>
+                                    <tr>
+                                        <th class="d-none d-md-table-cell">ID</th>
+                                        <th>Konu</th>
+                                        <th>Ders</th>
+                                        @if (User.IsInRole("Müdür"))
+                                        {
+                                            <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+                                            <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                        }
+                                     
+                                        <th>Aktiflik durumu</th>
+                                        <th>Düzenle veya sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Subjects)
+                                    {
+                                        <tr>
+                                            <td class="d-none d-md-table-cell">@item.Id</td>
+                                            <td class="d-none d-md-table-cell">@item.Name</td>
+                                            <td class="d-none d-md-table-cell">@item.Lesson.Name</td>
+                                            @if (User.IsInRole("Müdür"))
+                                            {
+                                                <td class="d-none d-md-table-cell">@item.CreatedDate</td>
+                                                <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
+                                            }
+                                     
+                                            @if (item.Condition==true)
+                                            {
+                                                <td><span class="badge bg-success">@item.Condition</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge bg-danger">@item.Condition</span></td>
+                                            }
+                                            
+                                            <td>
+                                                <a href="/Subject/Detail/@item.Id"><i class="align-middle" data-feather="edit"></i></a>
+                                                 <form asp-controller="Subject" asp-action="Delete" method="post" style="display:inline">
+                                                    <input type="hidden" name="subjectId" value="@item.Id" />
+                                                    <input type="hidden" name="lessonId" value="@item.LessonId" />
+                                                    <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+                                                </form>
+                                                
+                                            </td>
+                                        </tr>
+                                    }
+                          
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div id="small-modal" class="modal-content">
+                <span class="close">&times;</span>
+                <h2 class="modal-title text-center"><strong> Konu Ekle</strong></h2>
+                <form asp-controller="Subject" asp-action="Create">
+
+                    <div class="row text-center mt-5 ">
+                        <div class="col-12 text-center ">
+                            <div class="form-group row d-flex">
+                                <label for="Ders" class="col-sm-2 col-form-label">Sınıf</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("ClassList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Ders</label>
+                      
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("LessonList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Konu Adı</label>
+                                <div class="col-sm-10">
+                                    <input placeholder="Örneğin:Köklü Sayılar" name="Name" class="form-dropdown text-center" />
+                                </div>
+
+                     
+                  
+                                <label for="Ders" class="col-sm-2 col-form-label">Durum</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown" name="Condition">
+                                        <option value="True">Aktif</option>
+                                        <option value="False">Pasif</option>
+
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <tr>
+                        <td>
+                            <button id="cls_btn" class="rapor_button" type="submit">
+                                <strong>Kaydet </strong>
+                            </button><br>
+                        </td>
+                    </tr>
+                </form>
+           
+            </div>
+
+        </div>
+    </div>
+</main>
+

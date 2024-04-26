@@ -1,0 +1,62 @@
+﻿@using EntityLayer.Concrete;
+@model AppUserModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var counter = 0;
+}
+
+
+<main class="content ">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3"><strong>Görevli</strong> Düzenleme Sayfası</h1>
+        <div class="row">
+            <div class="edit-table text-center ">
+                <form asp-controller="Authority" asp-action="Update" method="post">
+                    <div class="row">
+                        <input asp-for="@Model.Id" type="hidden" value="@Model.Id"/>
+                        <div class="form-group row d-flex col-8">
+                            <label for="name" class="col-sm-4 col-form-label">İsmi:</label>
+                            <div class="col-sm-8">
+                                <input class="form-dropdown text-center" type="text" asp-for="@Model.Name" value="@Model.Name" placeholder="Örneğin:Ahmet">
+                            </div>
+                            <label for="name" class="col-sm-4 col-form-label">Soyisim:</label>
+                            <div class="col-sm-8">
+                                <input class="form-dropdown text-center" asp-for="@Model.SurName" value="@Model.SurName" type="text" placeholder="Örneğin:Yılmaz">
+                            </div>
+                            <label for="name" class="col-sm-4 col-form-label">TC KİMLİK:</label>
+                            <div class="col-sm-8">
+                                <input class="form-dropdown text-center" asp-for="@Model.Tc" value="@Model.Tc" type="text">
+                            </div>
+                            <label for="name" class="col-sm-4 col-form-label">Telefon:</label>
+                            <div class="col-sm-8">
+                                <input class="form-dropdown text-center" asp-for="@Model.PhoneNumber" value="@Model.PhoneNumber" type="text">
+                            </div>
+                            <label for="name" class="col-sm-4 col-form-label">Email:</label>
+                            <div class="col-sm-8">
+                                <input class="form-dropdown text-center" asp-for="@Model.Email" value="@Model.Email" type="text">
+                            </div>
+
+                            <label for="Ders" class="col-sm-4 col-form-label">Durum</label>
+                            <div class="col-sm-8">
+                                <select class="form-dropdown" asp-for="@Model.Authority">
+                                    <option value="True">Aktif</option>
+                                    <option value="False">Pasif</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <button id="design-btn" class="upper_btn" type="submit">
+                                <strong>Kaydet </strong><br>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+
+

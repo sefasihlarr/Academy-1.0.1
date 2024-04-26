@@ -1,0 +1,146 @@
+﻿@model QuestionListModel
+@{
+    ViewData["Title"] = "Exam";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var counter = 0;
+    var id = ViewData["Id"];
+}
+
+@section Scripts{
+
+    <script>
+        // Süre değerini al (örneğin ViewBag'den veya modelden) dakika cinsinden
+        var sureDegeri = @Model.SureDegeri * 60; // saniye cinsinden değeri dakikaya çevir
+
+        // Süre sayacı başlat
+        var countDownDate = new Date().getTime() + (sureDegeri * 1000);
+
+        // Süre sayacını güncelle
+        var x = setInterval(function () {
+
+            // Şu anki zamanı al
+            var now = new Date().getTime();
+
+            // Süre farkını hesapla
+            var distance = countDownDate - now;
+
+            // Dakika ve saniye değerlerini hesapla
+            var minutes = Math.floor(distance / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Süre sayacını ekranda göster
+            document.getElementById("timer").innerHTML = minutes + " dakika " + seconds + " saniye ";
+
+            // Süre dolunca farklı bir sayfaya yönlendir
+            if (distance < 0) {
+                clearInterval(x);
+                document.forms[0].submit();
+            }
+        }, 1000);
+    </script>
+}
+
+
+<div class="wrapper">
+    <div class="main" style="background-color: #E9F2FF;">
+        <main class="content" style="background-color: #E9F2FF;">
+            <div class="row">
+                <div class="col-10">
+                    <h3><strong>Meta Akdeniz Ölçme Ve Değerlendirme Sınavı</strong></h3>
+                </div>
+                <div class="question-time col-2">
+                    <div id="timer" style="text-align: center;"></div>
+                </div>
+            </div>
+            <form asp-action="Create" asp-controller="ExamAnswer" method="post">
+                <input type="hidden" name="ExamId" value="@ViewBag.ExamId" />
+                <div class="container-fluid p-0 ">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+                        <div class="carousel-inner">
+                            <input name="ExamId" value="@id" type="hidden" />
+                            <div class="carousel-item active">
+                                <div id="studentExam" class="studentExamPageContainer">
+                                    <div id="studentExamContent" class="student-exam-page-contents">
+                                        <div class="student-exam-page-question-title" style="margin:20px 0px 20px 0px">
+                                            <strong style="color:red;">UYARI ! </strong>
+                                        </div>
+                                        <div class="student-exam-page-question-content">
+                                            Aday perspektifi
+                                            HRPeak sınavları alanında uzman akademisyenler ve eğitimciler tarafından hazırlanmaktadır. Hazırlanan sorular siz adayların karşısına gelmeden önce bir norm grubu tarafından çözülerek test edilmekte ve seviyelendirilmektedir.
+
+                                            Sorular genellikle; adayların tablo-grafik okuma, sözel, sayısal ve soyut kavrama seviyelerini ölçmeye yöneliktir. Ayrıca karşınıza kod yazım tabanlı yazılım sınavları, dikkat testi ve klavye sınavı gibi uygulamalar da çıkabilir.
+
+                                            Bir HRPeak sınavıyla karşılaşıyorsanız muhtemelen bir kurum çalışanı veya iş başvurusu yapan bir adaysınız. Size gelen SMS ve/veya E-Mail’deki linki tıklayarak sürecinize dahil olabilirsiniz. Kurumlar küçük değişiklikler yapabilirler fakat süreç genel olarak gayet basit;
+
+                                            Linke tıkla,
+                                            Özgeçmiş/login ekranını doldur veya “adımı atla”,
+                                            KVKK metnini onayla,
+                                            Değerlendirmeni başlat,
+                                            Uyarı ekranını oku, isteniyorsa kameranı test et,
+                                            Sınava başla!
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            @foreach (var item in Model.Questions)
+                            {
+
+                                counter++;
+                                <div class="carousel-item">
+                                    <div id="studentExam" class="studentExamPageContainer">
+                                        <div id="studentExamContent" class="student-exam-page-contents">
+                                            <div class="student-exam-page-question-title">
+                                                <input type="hidden" name="questionIds" value="@item.Id" />
+                                                <strong>Soru-@counter</strong>
+                                            </div>
+                                            @if (item.ImageUrl!=null)
+                                            {
+                                                <div class="container"><img src="~/Template/questions/@item.ImageUrl" style="width:30%" /></div>
+                                            }
+                                           
+                                            <div class="student-exam-page-question-content">
+                                                @item.QuestionText
+                                            </div>
+
+                                            <div class="student-exam-page-question-content">
+                                                <strong> @item.Text</strong>
+                                            </div>
+
+                                            <div class="student-exam-page-answers">
+
+                                                @foreach (var option in item.Options)
+                                                {
+                                                    <span>
+                                                        <strong><input type="radio" value="@option.Id" name="optionIds[@item.Id]" class="answer-radio" style="cursor:pointer"> )</strong>
+                                                        @option.Text
+                                                    </span>
+                                                    <br>
+                                                }
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="student-exam-page-question-number-container">
+                        <a class="carousel-control-prev" style=" margin-top:2%;position: relative; top: 1%; width:15%;height:36px;background-image: linear-gradient(#A26BBD, #4C8BCD);" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </a>
+                        <button style="margin-top:2%;width:15%;height:36px; margin-left:25%" class="rapor_button ">Sınavı Bitir</button>
+                        <a class="carousel-control-next" style="margin-left:25%; margin-top:2%;position: relative; top: 1%; width:15%;height:36px;background-image: linear-gradient(#A26BBD, #4C8BCD);" href="#carouselExampleIndicators" href="#carouselExampleIndicators" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"><strong></strong></span>
+                        </a>
+                    </div>
+            </form>
+    </div>
+    </main>
+</div>
+</div>
+

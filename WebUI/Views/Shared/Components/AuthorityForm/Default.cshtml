@@ -1,0 +1,62 @@
+﻿@model AuthorityModel
+<form asp-controller="Authority" asp-action="Register" method="post">
+	<div class="popup">
+		<div id="myModal" class="modal">
+			<div class="modal-content" id="small-modal">
+				<span class="close">&times;</span>
+				<h2 class="modal-title text-center"><strong> Görevli Ekle</strong></h2>
+
+					<div class="row">
+						<div class="col-12">
+							<div class="form-group row d-flex">
+							
+								<label for="name" class="col-sm-3 col-form-label">Ad</label>
+								<div class="col-sm-9">
+								<span asp-validation-for="Name" class="text-danger"></span>
+									<input class="answer-place text-center" name="Name" type="text" placeholder="Örneğin:Ahmet">
+								</div>
+							
+								<label for="name" class="col-sm-3 col-form-label">Soyad</label>
+								<div class="col-sm-9">
+									<span asp-validation-for="SurName" class="text-danger"></span>
+									<input class="answer-place text-center" type="text" name="SurName" placeholder="Örneğin:Yılmaz">
+								</div>
+							
+								<label for="name" class="col-sm-3 col-form-label">Tc</label>
+								<div class="col-sm-9">
+								<span asp-validation-for="TcNumber" class="text-danger"></span>
+									<input class="answer-place text-center" name="TcNumber" type="text" placeholder="Örneğin:31025836914">
+								</div>
+							
+								<label for="name" class="col-sm-3 col-form-label">Telefon</label>
+								<div class="col-sm-9">
+								<span asp-validation-for="Phone" class="text-danger"></span>
+									<input class="answer-place text-center" type="text" name="Phone" placeholder="Örneğin:055252525">
+								</div>
+						
+								<label for="name" class="col-sm-3 col-form-label">Şifre</label>
+								<div class="col-sm-9">
+								<span asp-validation-for="Password" class="text-danger"></span>
+									<input class="answer-place text-center" type="text" name="Password" placeholder="Şifre">
+								</div>
+						
+								<label for="name" class="col-sm-3 col-form-label">Şifre Tekrar</label>
+								<div class="col-sm-9">
+								<span asp-validation-for="RePassword" class="text-danger"></span>
+									<input class="answer-place text-center" type="text" name="RePassword" placeholder="Şifre Tekrar">
+								</div>
+								<input type="hidden" name="Authority" value="True"/>
+								<input type="hidden" name="Condition" value="True"/>
+							</div>
+						</div>
+
+
+					</div>
+					<button id="cls_btn" class="upper_btn" type="submit">
+						<strong>Kaydet </strong>
+					</button>
+			</div>
+		</div>
+
+	</div>
+	</form>

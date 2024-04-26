@@ -1,0 +1,96 @@
+﻿@using EntityLayer.Concrete;
+@model ClassModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var counter = 0;
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3"><strong>Sınıf</strong> Düzenleme Sayfası</h1>
+        <div class="row">
+            <div class="edit-table text-center">
+
+                <form asp-action="Update" asp-controller="Class" method="post">
+                    <div class="form-group row d-flex">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <label for="name" class="col-sm-4 col-form-label">İsmi</label>
+                                <div class="col-sm-8">
+                                    <input class="form-dropdown text-center" type="hidden" name="Id" value="@Model.Id" placeholder="@Model.Name">
+                                    <input class="form-dropdown text-center" type="text" name="Name" value="@Model.Name" placeholder="@Model.Name">
+                                </div>
+                                <label for="Ders" class="col-sm-4 col-form-label">Durum</label>
+                                <div class="col-sm-8">
+                                    <select class="form-dropdown" name="condition">
+                                        @if (Model.Condition == true)
+                                        {
+                                            <option value="True" selected>Aktif</option>
+                                            <option value="False">Pasif</option>
+                                        }
+                                        else if (Model.Condition == false)
+                                        {
+                                            <option value="False" selected>Pasif</option>
+                                            <option value="True">Aktif</option>
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="col-sm-8">
+                                    @foreach (var item in (List<Branch>)ViewBag.Brances)
+                                    {
+                                        var isChecked = "";
+
+                                        if (Model.SelectedBranch.Any(x => x.Id == item.Id))
+                                        {
+                                            isChecked = "checked";
+                                            <input type="hidden" name="SelectedBranch[@counter]" value="@item.Id" />
+                                            <input type="hidden" name="SelectedBranch[@counter]" value="@item.Name" />
+
+                                            counter++;
+
+                                        }
+
+                                        else
+                                        {
+                                            isChecked = "";
+                                        }
+
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   name="branchIds"
+                                                   value="@item.Id"
+                                                   class="custom-control-input"
+                                                   id="branch@(item.Id)"
+                                            @isChecked />
+
+
+                                            <label class="custom-control-label" for="branch@(item.Id)">@item.Name</label>
+                                        </div>
+
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+                       
+                    </div>
+                    <div>
+                        <button id="cls_btn" class="upper_btn " type="submit">
+                            <strong>Kaydet </strong><br>
+                        </button>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</main>

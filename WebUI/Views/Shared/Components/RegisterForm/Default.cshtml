@@ -1,0 +1,147 @@
+﻿@model RegisterModel
+
+<form asp-controller="Account" asp-action="Register" method="post">
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div class="medium-modal" id="modal-content1">
+                <div class="row d-flex">
+                    <div class="col-10">
+                        <h3 class="modal-title col-10"><strong> Öğrenci Ekle</strong></h3>
+                    </div>
+                    <div class="col-2">
+                        <span class="close">&times;</span>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-3 col-form-label">Ad</label>
+                    <div class="col-sm-9">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <input class="answer-place text-center" asp-for="Name" type="text" placeholder="Örneğin:Ahmet">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 col-form-label">Soyad</label>
+                    <div class="col-sm-9">
+                        <span asp-validation-for="SurName" class="text-danger"></span>
+                        <input class="answer-place text-center" asp-for="SurName" type="text" placeholder="Örneğin:Yılmaz">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 col-form-label">Tc Kimlik</label>
+                    <div class="col-sm-9">
+                        <span asp-validation-for="TcNumber" class="text-danger"></span>
+                        <input class="answer-place text-center" asp-for="TcNumber" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="tc" class="col-sm-3 col-form-label">Telefon</label>
+                    <div class="col-sm-9">
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                        <input class="answer-place" type="text" asp-for="Phone">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <label for="tc" class="col-sm-3 col-form-label">Şifre</label>
+                    <div class="col-sm-9">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                        <input class="answer-place" type="text" asp-for="Password">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <label for="tc" class="col-sm-3 col-form-label">Şifre Tekrar</label>
+                    <div class="col-sm-9">
+                        <span asp-validation-for="RePassword" class="text-danger"></span>
+                        <input class="answer-place" type="text" asp-for="RePassword">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <label for="Ders" class="col-sm-3 col-form-label">Sınıf</label>
+                    <div class="col-sm-9">
+                        <span asp-validation-for="ClassId" class="text-danger"></span>
+                        @await Component.InvokeAsync("ClassList")
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="Ders" class="col-sm-3 col-form-label">Şube</label>
+                    <div class="col-sm-9">
+                        <span asp-validation-for="BranchId" class="text-danger"></span>
+
+                        @await Component.InvokeAsync("BranchList")
+                    </div>
+                </div>
+
+                <a id="upper" class="upper_btn">
+                    <strong>İleri </strong>
+                </a>
+
+            </div>
+            <div class="modal-content2" id="modal-content2">
+                <span class="close"></span>
+                <h2 class="modal-title text-center"><strong> Öğrenci Veli Ekle</strong></h2>
+
+                <div class="row">
+                    <label class="col-sm-3 col-form-label">Veli İsmi</label>
+                    <div class="col-sm-9">
+                        <input class="answer-place text-center" name="GuardianName" type="text" placeholder="Örneğin:Ahmet">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 col-form-label">Veli Soyismi</label>
+                    <div class="col-sm-9">
+                        <input class="answer-place text-center" name="GuardianSurName" type="text" placeholder="Örneğin:Ahmet">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 col-form-label">Veli İsmi-2</label>
+                    <div class="col-sm-9">
+                        <input class="answer-place text-center" name="GuardianName2" type="text" placeholder="Örneğin:Ahmet">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 col-form-label">Veli Soyİsmi-2</label>
+                    <div class="col-sm-9">
+                        <input class="answer-place text-center" name="GuardianSurName2" type="text" placeholder="Örneğin:Yılmaz">
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="tc" class="col-sm-3 col-form-label">Veli Telefon</label>
+                    <div class="col-sm-9">
+                        <input class="answer-place" name="GuardianPhone" type="text">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <label for="tc" class="col-sm-3 col-form-label">Veli Telefon 2</label>
+                    <div class="col-sm-9">
+                        <input class="answer-place" name="GuardianPhone2" type="text">
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-9">
+                        <a style="top:2%;padding:0%;" class="lower_btn" id="lower_btn">
+                            <strong>Geri Dön</strong>
+                        </a>
+                    </div>
+                    <div class="col-3">
+                        <button id="cls_btn" type="submit">
+                            <strong>Kaydet</strong>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</form>

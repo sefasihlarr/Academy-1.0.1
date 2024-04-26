@@ -1,0 +1,275 @@
+﻿@model QuestionListModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Scripts{
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetClass();
+            $('#Class').change(function () {
+                var id = $(this).val();
+                $('#Lesson').empty();
+                $('#Lesson').append('<option>--Ders seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Lesson?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Lesson').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $('#Lesson').change(function () {
+                var id = $(this).val();
+                $('#Subject').empty();
+                $('#Subject').append('<option>--Konu seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Subject?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Subject').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $('#Subject').change(function () {
+                var id = $(this).val();
+                $('#Output').empty();
+                $('#Output').append('<option>--Kazanım seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Output?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Output').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Soru Sayfası</h1>
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="page-search">
+                            <div class="row col-12">
+                                <div class="text-center col-10">
+                                    <h1>Matematik Soruları</h1>
+                                </div>
+                                <div class="col-2">
+                                    <button style="margin-top: 6px;" id="myBtn" class="yetkili_btn">
+                                        <strong>Yeni Soru Ekle </strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="questions-container">
+
+                        @foreach (var item in Model.Questions)
+                        {
+
+                            <div class="question-content">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4><strong>Soru-@item.Id</strong></h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        @if (item.Level.Name == "Kolay")
+                                        {
+                                            <h5 class="text-center" style="background-color:yellowgreen;border-radius:10px"><strong style="color:white">Kolay</strong></h5>
+                                        }
+                                        else if (item.Level.Name == "Orta")
+                                        {
+                                            <h5 class="text-center" style="background-color:orange;border-radius:10px"><strong style="color:white">Orta</strong></h5>
+                                        }
+                                        else
+                                        {
+                                            <h5 class="text-center" style="background-color:red;border-radius:10px"><strong style="color:white">Zor</strong></h5>
+                                        }
+                                        <h4><strong></strong></h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="Question/Detail/@item.Id" id="question-review-icon">
+                                            <i class="bi bi-pencil-square">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                </svg>
+                                            </i>
+                                        </a>
+                                    </div>
+                                </div>
+                                @if (item.ImageUrl != null)
+                                {
+                                    <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
+                                }
+
+                                <input type="hidden" name="Condition" value="True" />
+                                <span>@item.Text</span><br>
+                                <span class="question-info"><strong>@item.QuestionText?</strong></span>
+                                <div class="question-answer-list">
+                                    @foreach (var option in item.Options.Where(x => x.QuestionId == item.Id).ToList())
+                                    {
+                                        <span><strong>@option.Name)</strong> @option.Text</span>
+
+                                        <br>
+                                    }
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <form asp-controller="Question" asp-action="Create" enctype="multipart/form-data">
+                <div class="modal-content" id="modal-content1">
+                    <div class="row d-flex">
+                        <div class="col-10">
+                            <h3 class="modal-title col-10"><strong> Soru Ekle</strong></h3>
+                        </div>
+                        <div class="col-2">
+                            <span class="close">&times;</span>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row d-flex">
+                                <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("ClassList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("LessonList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Konular</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("SubjectList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Kazanım</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("OutputList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("LevelList")
+                                </div>
+              
+                                <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
+                                <div class="col-sm-10">
+                                    <textarea class="small-text" name="Text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6" style="margin-top:0px">
+
+                            <textarea id="big-text" placeholder="Soru Metnini giriniz..." class="input" name="QuestionText"></textarea>
+
+                            <input type="file" name="file" id="answerfileUpload">
+                        </div>
+                    </div>
+
+
+                    <a id="upper" class="upper_btn">
+                        <strong>İlerle </strong>
+                    </a>
+                </div>
+                @await Component.InvokeAsync("Option")
+            </form>
+            @* <div class="popup">
+            <form asp-controller="Question" asp-action="Create" method="post" enctype="multipart/form-data">
+            <div id="myModal" class="modal">
+            <div class="modal-content" id="modal-content1">
+            <span class="close">&times;</span>
+            <h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
+
+            <div class="row">
+            <div class="col-6">
+            <div class="form-group row d-flex">
+            <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
+            <div class="col-sm-10">
+            <textarea class="small-text" name="Text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
+            </div>
+            <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+            <div class="col-sm-10">
+            @await Component.InvokeAsync("LessonList")
+            </div>
+            <label for="Ders" class="col-sm-2 col-form-label">Konular</label>
+            <div class="col-sm-10">
+            @await Component.InvokeAsync("SubjectList")
+            </div>
+            <label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
+            <div class="col-sm-10">
+            @await Component.InvokeAsync("LevelList")
+            </div>
+            <label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
+            <div class="col-sm-10">
+            @await Component.InvokeAsync("OutputList")
+            </div>
+            </div>
+            </div>
+            <div class="col-6">
+            <div class="big-text d-flex ">
+            <h4>
+            <strong>Soru Metini:</strong>
+            </h4><br>
+
+            <textarea id="big-text" class="input" name="QuestionText"></textarea>
+            </div>
+            <input type="file" name="file" id="answerfileUpload">
+            </div>
+            </div>
+
+            <a id="upper" class="upper_btn">
+            <strong>İlerle </strong>
+            </a>
+            </div>
+            @await Component.InvokeAsync("Option")
+            </div>
+            </form>
+
+
+            </div>*@
+
+</main>
+
+
+

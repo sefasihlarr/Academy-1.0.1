@@ -1,0 +1,124 @@
+﻿@using static System.Collections.Specialized.BitVector32;
+@model AppUserListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+
+    <script src="~/jquery/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetClass();
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
+}
+<main class="content d-flex flex-wrap justify-content-between">
+
+    <div class="custom-cards-container flex-2  container-sm ">
+        <div class="container-fluid p-0">
+
+            <h1 class="h3 mb-3"><strong>Öğrenci</strong> Ekleme Sayfası</h1>
+
+            <div class="row">
+                <div class="d-flex">
+                    <div class="w-100">
+                        <div class="row">
+
+                            <div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+                                <div class="row">
+                                    <div class="card-header col-10">
+                                        <h5 class="card-title mb-0">Konular</h5>
+                                    </div>
+                                    <div class="yetkili_btn col-2">
+
+                                        <a style="color:white" id="myBtn">
+                                            <strong>Yeni Öğrenci Ekle </strong>
+
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <table class="table my-0 text-center">
+                                    <thead>
+
+                                        <tr>
+                                            <th class="d-none d-md-table-cell">ID</th>
+                                            <th class="d-none d-md-table-cell">TC Kimlik</th>
+                                            <th>Ad</th>
+                                            <th>Soyad</th>
+                                            <th>Sınıf</th>
+                                            <th>Şube</th>
+                                            <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+                                            <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                            <th>Durum</th>
+                                            <th>Düzenle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Users)
+                                        {
+                                            <tr>
+                                                <td class="d-none d-md-table-cell">@item.Id</td>
+                                                <td class="d-none d-md-table-cell">@item.Tc</td>
+                                                <td class="d-none d-md-table-cell">@item.Name</td>
+                                                <td class="d-none d-md-table-cell">@item.SurName</td>
+                                                <td class="d-none d-md-table-cell">@item.Class.Name</td>
+                                                <td class="d-none d-md-table-cell">@item.Branch.Name</td>
+                                                <td class="d-none d-md-table-cell">@item.CreatedDate</td>
+                                                <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
+                                                @if (item.Condition == true)
+                                                {
+                                                    <td><span class="badge bg-success">Aktif</span></td>
+                                                }
+                                                else
+                                                {
+                                                    <td><span class="badge bg-danger">Pasif</span></td>
+                                                }
+                                                <td>
+                                                    <a href="/Account/StudentDetail/@item.Id"><i class="align-middle" data-feather="edit"></i></a>
+                                                    <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @await Component.InvokeAsync("RegisterForm")
+
+</main>
+

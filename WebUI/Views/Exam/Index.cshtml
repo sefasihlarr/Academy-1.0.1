@@ -1,0 +1,214 @@
+﻿@model ExamListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetClass();
+            $('#Class').change(function () {
+                var id = $(this).val();
+                $('#Lesson').empty();
+                $('#Lesson').append('<option>--Ders seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Lesson?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Lesson').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $('#Lesson').change(function () {
+                var id = $(this).val();
+                $('#Subject').empty();
+                $('#Subject').append('<option>--Konu seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Subject?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Subject').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
+}
+
+<main class="content">
+    <div id="loading">
+        <img src="/Template/assets/images/loader.gif" alt="Yükleniyor..." />
+    </div>
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Sınavlar Sayfası</h1>
+
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+
+                        <div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+                            <div class="row">
+                                <div class="card-header col-10">
+                                    <h5 class="card-title mb-0">Sınavlar</h5>
+                                </div>
+                                <div class="yetkili_btn col-2">
+
+                                    <a style="color:white" id="myBtn">
+                                        <strong>Yeni Sınav Ekle </strong>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <table class="table my-0 text-center">
+                                <thead>
+
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>İsmi</th>
+                                        <th>Konu</th>
+                                        <th>Ders</th>
+                                        <th>Sınıf</th>
+                                        <th>Sorular</th>
+                                        @if (User.IsInRole("Müdür"))
+                                        {
+                                            <th>Ekleyen ve tarihi</th>
+                                            <th>Değiştiren ve tarihi</th>
+                                        }
+                                     
+                                        <th>Aktiflik durumu</th>
+                                        <th>Düzenle veya sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Exams)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.Subject.Name</td>
+                                            <td>@item.Lesson.Name</td>
+                                            <td>@item.Class.Name</td>
+                                            <td>
+                                                
+                                                <form asp-controller="ExamQuestion" asp-action="Index" method="post" style="display:inline">
+                                                    <button class="btn btn-primary" type="submit">Sorular</button>
+                                                    <input type="hidden" name="Id" value="@item.Id" />
+                                                    <input type="hidden" name="lessonId" value="@item.LessonId" />
+                                                    <input type="hidden" name="subjectId" value="@item.SubjectId" />
+                                                    <input type="hidden" name="classId" value="@item.ClassId" />
+                                                </form>
+                                            </td>
+                                            @if (User.IsInRole("Müdür"))
+                                            {
+                                                <td>İsim-@item.CreatedDate</td>
+                                                <td>İsim-@item.UpdatedDate</td>
+                                            }
+                                     
+                                            <td><span class="badge bg-success">Aktif</span></td>
+                                            <td>
+                                                <a href="/Exam/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+                                                <form asp-controller="Class" asp-action="Delete" method="post" style="display:inline">
+                                                    <input type="hidden" name="lessonId" value="@item.LessonId" />
+                                                    <input type="hidden" name="subjectId" value="@item.SubjectId" />
+                                                    <input type="hidden" name="classId" value="@item.ClassId" />
+                                                    <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div id="lesson-modal" class="modal-content">
+                <span class="close">&times;</span>
+                <h3 class="modal-title text-center"><strong> Sınav Ekle</strong></h3>
+                <form asp-controller="Exam" asp-action="Create" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="Ders" class="col-sm-3 col-form-label">Başlık</label>
+                            <div class="col-sm-12">
+                                <input placeholder="Örneğin:Matematik Sınavı" name="Title" class="form-dropdown" />
+                            </div>
+                            <label for="Ders" class="col-sm-3 col-form-label">Sınıf</label>
+                            <div class="col-sm-12">
+                                @await Component.InvokeAsync("ClassList")
+                            </div>
+                            <label for="Ders" class="col-sm-3 col-form-label">Ders</label>
+                            <div class="col-sm-12">
+                                @await Component.InvokeAsync("LessonList")
+                            </div>
+                            <label for="Ders" class="col-sm-3 col-form-label">Konu</label>
+                            <div class="col-sm-12">
+                                @await Component.InvokeAsync("SubjectList")
+                            </div>
+                            <label for="Ders" class="col-sm-3 col-form-label">Durumu</label>
+                            <div class="col-sm-12">
+                                <select class="form-dropdown" name="condition">
+                                    <option value="True">Aktif</option>
+                                    <option value="False">Pasif</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><strong>Sınav Açıklaması:</strong> </h5>
+                            <textarea class=" big-text" type="text" name="Description" placeholder="Cevap İçeriğini giriniz"></textarea>
+                            <div class="true-answer-select ">
+                            </div>
+                            <label for="Ders" class="col-sm-3 col-form-label">Sınav Süresi</label>
+                            <div class="col-sm-12">
+                                <input placeholder="Örneğin:40" name="Timer" class="form-dropdown" />
+                            </div>
+                            <label for="Ders" class="col-sm-3 col-form-label">Sınav Tarihi</label>
+                            <div class="col-sm-12">
+                                <input placeholder="Örneğin: 11:30 12/04/2023" name="ExamDate" class="form-dropdown" />
+                            </div>
+
+                            <div>
+                                <button class="btn btn-primary" type="submit"><strong>Kaydet</strong></button>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</main>
+

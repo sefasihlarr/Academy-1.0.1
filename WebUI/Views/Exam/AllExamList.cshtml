@@ -1,0 +1,179 @@
+﻿@model ExamListModel
+@{
+    ViewData["Title"] = "AllExamList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="content d-flex flex-wrap justify-content-between">
+
+
+    <div class="custom-cards-container flex-2  container-sm ">
+        <div class="custom-cards-container-title">Raporlar</div>
+        <div class="custom-cards d-flex justify-content-between flex-wrap">
+            @*@section Scripts{
+            <script>
+            document.getElementById('myButton').addEventListener('click', function (e) {
+            e.preventDefault();
+            let timerInterval
+            Swal.fire({
+            title: 'Sınav Hesapla!',
+            html: 'Sınav hesaplanıyor <b></b> neredeyse bitti.',
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft()
+            }, 100)
+            },
+            willClose: () => {
+            clearInterval(timerInterval)
+            }
+            }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+            // Burada istediğiniz URL'ye yönlendirebilirsiniz
+            window.location.href = "/CalculateExamScors/AllUsersResultQuestions/";
+            }
+            })
+            });
+            </script>
+            }*@
+
+            @foreach (var item in Model.Exams)
+            {
+                <div class="custom-cards d-flex justify-content-between flex-wrap">
+                    <div class="custom-card custom-left-border d-flex justify-content-between flex-column custom-shadow">
+                        <div class="custom-card-top">
+                            <div class="custom-card-title">@item.Title</div>
+                            <div class="custom-card-info">
+                                <span class="custom-card-info-title">Tarih : </span>
+                                16.02.2023
+                            </div>
+                            <div class="custom-card-info">
+                                <span class="custom-card-info-title">İçerik : </span>
+                                @item.Description
+                            </div>
+                        </div>
+                        <div class="custom-card-bottom">
+                            <div class="custom-card-buttons d-flex justify-content-between">
+                                <div>
+
+
+
+                                    @if (ViewBag.Scors.Count > 0)
+                                    {
+                                        <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-4">
+                                            İ <i class="bi bi-eye custom-card-icons"></i>
+                                        </a>
+
+                                        bool examFound = false;
+
+                                        foreach (var value in ViewBag.Scors)
+                                        {
+                                            if (item.Id == value.ExamId)
+                                            {
+                                                <a class="custom-card-button linear-background mr-4" style="color:wheat">
+                                                    H <i class="bi bi-x-octagon-fill" style="color:red"></i>
+                                                </a>
+                                                <a href="/ExamResult/AllStudentExamResult/@item.Id" class="custom-card-button linear-background">
+                                                    D <i class="bi bi-chevron-right custom-card-icons"></i>
+                                                </a>
+                                                examFound = true;
+                                                break;
+                                            }
+                                        }
+                                        if (!examFound)
+                                        {
+                                            <a href="/CalculateExamScors/AllUsersResultQuestions/@item.Id" class="custom-card-button linear-background mr-4" @*id="myButton"*@>
+                                                H <i class="bi bi-calculator-fill"></i>
+                                            </a>
+                                            <a class="custom-card-button linear-background">
+                                                D <i class="bi bi-chevron-right custom-card-icons"></i>
+                                            </a>
+                                        }
+                                    }
+
+                                    else
+                                    {
+                                        <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-4">
+                                            İ <i class="bi bi-eye custom-card-icons"></i>
+                                        </a>
+                                        <a href="/CalculateExamScors/AllUsersResultQuestions/@item.Id" class="custom-card-button linear-background mr-4" @*id="myButton"*@>
+                                            H <i class="bi bi-calculator-fill"></i>
+                                        </a>
+
+                                        <a href="/ExamResult/AllStudentExamResult/@item.Id" class="custom-card-button linear-background">
+                                            D <i class="bi bi-chevron-right custom-card-icons"></i>
+                                        </a>
+                                    }
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+    </div>
+
+    <div class="custom-cards-container ">
+        <div class="custom-cards-container-title">İstatistikler</div>
+        <div class="custom-cards-2 d-flex flex-column align-items-center custom-shadow">
+            <div class="custom-card-2">
+                <div class="custom-card-2-title">Haftalık Analizler</div>
+                <div class="custom-card-2-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Corporis, maxime. Asperiores possimus accusamus pariatur, blanditiis sint enim
+                    voluptates voluptatibus minima!<a href="#" class="custom-card-2-button">İncele</a>
+                </div>
+            </div>
+            <div class="custom-card-2">
+                <div class="custom-card-2-title">Aylık Analizler</div>
+                <div class="custom-card-2-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Corporis, maxime. Asperiores possimus accusamus pariatur, blanditiis sint enim
+                    voluptates voluptatibus minima!<a href="#" class="custom-card-2-button">İncele</a>
+                </div>
+            </div>
+            <div class="custom-card-2">
+                <div class="custom-card-2-title">Yıllık Analizler</div>
+                <div class="custom-card-2-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Corporis, maxime. Asperiores possimus accusamus pariatur, blanditiis sint enim
+                    voluptates voluptatibus minima!<a href="#" class="custom-card-2-button">İncele</a>
+                </div>
+            </div>
+            <div class="custom-card-2">
+                <div class="custom-card-2-title">Sınav Bazlı Analizler</div>
+                <div class="custom-card-2-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Corporis, maxime. Asperiores possimus accusamus pariatur, blanditiis sint enim
+                    voluptates voluptatibus minima!<a href="#" class="custom-card-2-button">İncele</a>
+                </div>
+            </div>
+            <div class="custom-card-2">
+                <div class="custom-card-2-title">Başarılı Dersler</div>
+                <div class="custom-card-2-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Corporis, maxime. Asperiores possimus accusamus pariatur, blanditiis sint enim
+                    voluptates voluptatibus minima!<a href="#" class="custom-card-2-button">İncele</a>
+                </div>
+            </div>
+            <div class="custom-card-2">
+                <div class="custom-card-2-title">Başarılı Öğrenciler</div>
+                <div class="custom-card-2-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Corporis, maxime. Asperiores possimus accusamus pariatur, blanditiis sint enim
+                    voluptates voluptatibus minima!<a href="#" class="custom-card-2-button">İncele</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

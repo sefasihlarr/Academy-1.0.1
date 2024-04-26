@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="3.6.0" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="6.0.13" />
+    <PackageReference Include="MimeKit" Version="3.6.0" />
+    <PackageReference Include="System.IO" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\jquery\" />
+    <Folder Include="wwwroot\Template\.git\objects\info\" />
+    <Folder Include="wwwroot\Template\.git\refs\tags\" />
+    <Folder Include="wwwroot\Template\video\" />
+    <Folder Include="wwwroot\Template\questions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Template\.git\config" />
+    <None Include="wwwroot\Template\.git\description" />
+    <None Include="wwwroot\Template\.git\HEAD" />
+    <None Include="wwwroot\Template\.git\hooks\applypatch-msg.sample" />
+    <None Include="wwwroot\Template\.git\hooks\commit-msg.sample" />
+    <None Include="wwwroot\Template\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="wwwroot\Template\.git\hooks\post-update.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-applypatch.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-commit.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-merge-commit.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-push.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-rebase.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-receive.sample" />
+    <None Include="wwwroot\Template\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="wwwroot\Template\.git\hooks\push-to-checkout.sample" />
+    <None Include="wwwroot\Template\.git\hooks\update.sample" />
+    <None Include="wwwroot\Template\.git\index" />
+    <None Include="wwwroot\Template\.git\info\exclude" />
+    <None Include="wwwroot\Template\.git\logs\HEAD" />
+    <None Include="wwwroot\Template\.git\logs\refs\heads\master" />
+    <None Include="wwwroot\Template\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="wwwroot\Template\.git\objects\pack\pack-c39cf5419efad07e1d2b697ef07a0754fdf57cdc.idx" />
+    <None Include="wwwroot\Template\.git\objects\pack\pack-c39cf5419efad07e1d2b697ef07a0754fdf57cdc.pack" />
+    <None Include="wwwroot\Template\.git\packed-refs" />
+    <None Include="wwwroot\Template\.git\refs\heads\master" />
+    <None Include="wwwroot\Template\.git\refs\remotes\origin\HEAD" />
+  </ItemGroup>
+
+</Project>

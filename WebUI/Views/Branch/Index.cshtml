@@ -1,0 +1,99 @@
+﻿@model BranchListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+
+    <script src="~/jquery/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+
+
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Şubeler Sayfası</h1>
+
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+
+                        <div class="card flex-fill col-12 " style="border-radius: 25px;
+                                                                        box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+                            <div class="row">
+                                <div class="card-header col-10">
+                                    <h5 class="card-title mb-0">Şubeler</h5>
+                                </div>
+                                <div class="yetkili_btn col-2">
+
+                                    <a style="color:white" id="myBtn">
+                                        <strong>Yeni Şube Ekle </strong>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <table class="table my-0 text-center">
+                                <thead>
+
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>İsmi</th>
+                                        @if (User.IsInRole("Müdür"))
+                                            {
+                                            <th>Ekleyen ve tarihi</th>
+                                            <th>Değiştiren ve tarihi</th>
+                                            }
+                                   
+                                        <th>Aktiflik durumu</th>
+                                        <th>Düzenle veya sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Branches)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Name</td>
+                                            @if (User.IsInRole("Müdür"))
+                                            {
+                                                <td>ahmet-@item.CreatedDate</td>
+                                                <td>mehmet-@item.UpdatedDate</td>
+                                            }
+                                    
+                                            @if (item.Condition == true)
+                                            {
+                                                <td><span class="badge bg-success">Aktif</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge bg-danger">Pasif</span></td>
+                                            }
+
+                                            <td>
+                                                <a href="/Branch/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+                                                <form asp-controller="Branch" asp-action="Delete" method="post" style="display:inline">
+                                                    <input type="hidden" name="Id" value="@item.Id" />
+                                                    <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   @await Component.InvokeAsync("BranchForm")
+</main>

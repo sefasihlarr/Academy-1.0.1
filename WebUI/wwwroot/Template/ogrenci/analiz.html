@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="&amp" ;>
+	<meta name="author" content="">
+	<meta name="keywords" content="">
+	<meta name=”viewport” content=”” />
+	<link rel="shortcut icon" href="../assets/meta_logo_2.png" />
+	<link rel="canonical" href="" />
+	<title>Yetkili Paneli</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	<link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+
+	<link href="../assets/app.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar"style="background-image: linear-gradient(#A26BBD, #4C8BCD);">
+				<a class="sidebar-brand" href="../yetkili/yetkili_index.html">
+				<span style="font-size:25px" class="align-middle"><img src="../../assets/meta_logo_2.png"width="75px"height="75px"> LOGO</span>
+			</a>
+
+				<ul class="sidebar-nav">
+					<li class="sidebar-item ">
+						<a class="sidebar-link" href="../yetkili/yetkili_index.html">
+			<i class="align-middle" data-feather="home"></i> <span class="align-middle">Anasayfa</span>
+			</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="../yetkili/yetkili_profil_edit.html">
+			<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profil</span>
+			</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="../yetkili/yetkili_mesajlar.html">
+			<i class="align-middle" data-feather="message-square"></i> <span class="align-middle">Mesajlar</span>
+			</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="">
+			<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Ayarlar</span>
+			</a>
+			<li class="sidebar-item ">
+				<a class="sidebar-link" href="#">
+				<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Yetkili işlemleri</span>
+				<i class="align-middle" data-feather="chevron-down"></i>
+				</a>
+				<ul class="sidebar-dropdown list-unstyled">
+				<li class="sidebar-item ">
+					<a class="sidebar-link" href="../yetkili/yetkili_islem/yetkili_siniflar.html">
+					<i class="align-middle" data-feather="users"></i> <span class="align-middle">Sınıflar</span>
+					</a>
+				</li>
+				<li class="sidebar-item">
+					<a class="sidebar-link" href="yetkili_dersler.html">
+					<i class="align-middle" data-feather="book"></i> <span class="align-middle">Dersler</span>
+					</a>
+				</li>
+				<li class="sidebar-item">
+					<a class="sidebar-link" href="yetkili_konular.html">
+					<i class="align-middle" data-feather="server"></i> <span class="align-middle">Konular</span>
+					</a>
+				</li>
+			
+				<li class="sidebar-item">
+					<a class="sidebar-link" href="yetkili_dereceler.html">
+					<i class="align-middle" data-feather="list"></i> <span class="align-middle">Dereceler</span>
+					</a>
+				</li>
+				
+				<li class="sidebar-item">
+					<a class="sidebar-link" href="yetkili_sinavlar.html">
+				<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlar</span>
+				</a>
+						</li>
+			
+						<li class="sidebar-item">
+					<a class="sidebar-link" href="yetkili_soru.html">
+				<i class="align-middle" data-feather="plus-circle"></i> <span class="align-middle">Sorular</span>
+				</a>
+						</li>
+				</ul>
+			</li>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="">
+			<i class="align-middle" data-feather="info"></i> <span class="align-middle">S.S.S</span>
+			</a>
+					</li>
+				</ul>
+			</div>
+		
+	</nav>
+
+
+		<div class="main" style="background-color: #E9F2FF;">
+			<nav class="navbar navbar-expand navbar-light navbar-bg d-block">
+				<div class="navbar-top justify-content-between d-flex align-items-center w-100">
+					<a class="sidebar-toggle js-sidebar-toggle">
+						<i class="hamburger align-self-center"></i>
+					</a>
+					<div class="navbar-mid">
+						<div class="navbar-searchbar-container d-flex align-items-center">
+							<a href="#" class="searchbar-button">
+								<i class="bi-search bold searchbar-icon"></i>
+							</a>
+							<label for="searchbar-input" class="searchbar-input-container">
+								<input type="text" id="searchbar-input" class=" searchbar-input" placeholder="Ne Aramıştınız ?">
+							</label>
+						</div>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="navbar-nav navbar-align">
+							<li class="nav-item dropdown">
+								<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown"
+									data-bs-toggle="dropdown">
+									<div class="position-relative">
+										<i class="align-middle" data-feather="bell"></i>
+										<span class="indicator">1</span>
+									</div>
+								</a>
+								<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+									aria-labelledby="alertsDropdown">
+									<div class="dropdown-menu-header">
+										1 Yeni bildirim
+									</div>
+									<div class="list-group">
+										<a href="#" class="list-group-item">
+											<div class="row g-0 align-items-center">
+												<div class="col-2">
+													<i class="text-warning" data-feather="bell"></i>
+												</div>
+												<div class="col-10">
+													<div class="text-dark">Bildirim başlığı</div>
+													<div class="text-muted small mt-1">Bildirim metni</div>
+													<div class="text-muted small mt-1">1 dakika önce</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="dropdown-menu-footer">
+										<a href="#" class="text-muted">Tüm bildirimleri temizle</a>
+									</div>
+								</div>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-icon dropdown-toggle" href="yetkili_mesajlar.html" id="messagesButton">
+									<div class="position-relative">
+										<i class="align-middle" data-feather="message-circle"></i>
+										<span class="indicator">1</span>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
+									data-bs-toggle="dropdown"></a>
+
+								<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
+									data-bs-toggle="dropdown">
+									<img src="../assets/meta_logo_2.png" class="avatar img-fluid rounded me-1"
+										alt="profil resmi" /> <span class="text-dark">Yetkili ismi</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-end">
+									<a class="dropdown-item" href="yetkili_profil_edit.html"><i
+											class="align-middle me-1" data-feather="user"></i> Profil</a>
+									<a class="dropdown-item" href="yetkili_index.html"><i class="align-middle me-1"
+											data-feather="settings"></i>Ayarlar</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="../giris.html">Çıkış</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="navbar-bottom">
+					<div class="personel-container d-flex align-items-center">
+						<div class="personel-photo-container overflow-hidden d-flex align-items-center">
+							<img src="../assets/images/logo-usr.svg" alt="" class="w-100">
+						</div>
+						<div class="personel-info-container">
+							<div class="personel-status">Admin</div>
+							<div class="personel-name">Özlem Özkaya Ceylan</div>
+						</div>
+					</div>
+				</div>
+
+			</nav>
+			<main class="content">
+                <div  class="container-fluid p-0">
+                    <h1 class="h3 mb-3"><strong>Sınav</strong> Analizim</h1>
+					<div class="row">
+						<div class="d-flex">
+							<div class="w-100">
+								<div class="row">
+									
+									<div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+										<div class="row d-flex">
+											<div class="card-header col-6">
+												<h5 class="card-title mb-0">Bilgiler</h5>
+											</div>
+                                            <div class="card-header col-3">
+												<h5 class="card-title mb-0">Sınav Bilgileri</h5>
+											</div>
+                                            <div class="card-header col-3">
+												<h5 class="card-title mb-0">Doğru Yanlış Tablosu</h5>
+											</div>
+                                            
+					
+										</div>
+										<div class="row d-flex">
+                                            <div class="col-lg-5">
+                                                <table class="table ">
+                                                    <tr>
+                                                        <th>Ad:</th>
+                                                        <td>Can</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Soyad:</th>
+                                                        <td>Yıldırım</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>TC Kimlik:</th>
+                                                        <td>214151351312</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Sınıf:</th>
+                                                        <td>9</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Şube:</th>
+                                                        <td>F</td>
+                                                    </tr>
+                                                </table> 
+                                            </div>
+                                            <div class="col-lg-5 ">
+                                                <table class="table">
+                                                    <tr>
+                                                        <th>Soru Sayısı:</th>
+                                                        <td>20</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Doğru Sayısı:</th>
+                                                        <td>12</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Yanlış Sayısı:</th>
+                                                        <td>8</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Boş Sayısı:</th>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Başarı Oranı:</th>
+                                                        <td>%60</td>
+                                                    </tr>
+                                                    
+                                                </table> 
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <canvas width="" id="myChart"></canvas>
+                                            </div>
+                                        </div>
+                                        <hr>
+										<div class="row d-flex">
+											<div class="col-6">
+												<label for="Ders" class="col-sm-2 col-form-label">Konu</label>
+												<div class="col-sm-10">
+													<select  class="form-dropdown">
+														<option  value="">Köklü Sayılar</option>
+														<option  value="">Türev</option>
+														<option  value="">Üslü Sayılar</option>
+													</select>	
+													<button class="btn btn-primary">Filtrele</button>					
+												</div>
+											</div>
+											<div class="col-6">
+												
+											</div>
+											
+										</div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th  class="col-6">Konu Adı</th>
+                                                            <th  class="col-1">Soru Sayısı</th>
+                                                            <th  class="col-1">Doğru Sayısı</th>
+                                                            <th  class="col-1">Yanlış Sayısı</th>
+                                                            <th  class="col-1">Boş Sayısı</th>
+                                                            <th  class="col-2">Başarı Oranı</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tr>
+                                                        <th class="col-6">Üslü Sayılar</th>
+                                                        <td  class="col-1">6</td>
+                                                        <td  class="col-1">3</td>
+                                                        <td  class="col-1">2</td>
+                                                        <td  class="col-1">1</td>
+                                                        <th  class="col-2">%50</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col-6">Köklü Sayılar</th>
+                                                        <td  class="col-1">5</td>
+                                                        <td  class="col-1">1</td>
+                                                        <td  class="col-1">1</td>
+                                                        <td  class="col-1">3</td>
+                                                        <th  class="col-2">%20</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col-6">Türev</th>
+                                                        <td  class="col-1">3</td>
+                                                        <td  class="col-1">1</td>
+                                                        <td  class="col-1">1</td>
+                                                        <td  class="col-1">1</td>
+                                                        <th  class="col-2">%33</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col-6">Trgionotmetri</th>
+                                                        <td  class="col-1">2</td>
+                                                        <td  class="col-1">2</td>
+                                                        <td  class="col-1">0</td>
+                                                        <td  class="col-1">0</td>
+                                                        <th  class="col-2">%100</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col-6">Üslü Sayılar</th>
+                                                        <td  class="col-1">6</td>
+                                                        <td  class="col-1">3</td>
+                                                        <td  class="col-1">2</td>
+                                                        <td  class="col-1">1</td>
+                                                        <th  class="col-2">%50</th>
+                                                    </tr>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                  
+                                                    
+                                                </table>
+                                            </div>
+                                        </div>
+
+									</div>
+                </div>
+               
+
+            
+			</main>
+		</div>
+	</div>
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="https://www.metaakdeniz.com" target="_blank"><strong>Meta
+										Akdeniz Yazılım</strong></a> &copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://www.metaakdeniz.com"
+										target="_blank">Hakkında</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+var data = {
+  labels: [
+    "Yanlış Sayısı",
+    "Doğru Sayısı",
+    "Boş Sayısı"
+  ],
+  datasets: [{
+    data: [8, 12, 2],
+    backgroundColor: [
+      "red",
+      "lightgreen",
+      "yellow"
+    ],
+    hoverBackgroundColor: [
+      "#FF6384",
+      "#36A2EB",
+      "#FFCE56"
+    ]
+  }]
+};
+
+var promisedDeliveryChart = new Chart(document.getElementById('myChart'), {
+  type: 'doughnut',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false
+      }
+    }
+  },
+  plugins: [{
+    id: 'text',
+    beforeDraw: function(chart, a, b) {
+      var width = chart.width,
+        height = chart.height,
+        ctx = chart.ctx;
+
+      ctx.restore();
+      var fontSize = (height / 114).toFixed(2);
+      ctx.font = fontSize + "em sans-serif";
+      ctx.textBaseline = "middle";
+
+      var text = "60",
+        textX = Math.round((width - ctx.measureText(text).width) / 2),
+        textY = height / 2;
+
+      ctx.fillText(text, textX, textY);
+      ctx.save();
+    }
+  }]
+});
+    </script>
+	<script src="../assets/app.js"></script>
+	<script src="../assets/js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+</body>
+
+</html>

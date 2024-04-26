@@ -1,0 +1,55 @@
+﻿@model WebUI.Models.ScorListModel
+
+<div class="col-7">
+    <table class="col-12">
+
+        <tr>
+            <th>Doğru Sayısı</th>
+            <th>Yanlış Sayısı</th>
+            <th>Boş Sayısı</th>
+            <th>Başarı Oranı</th>
+        </tr>
+        @foreach (var item in Model.scors)
+        {
+            <tr>
+                <td>@item.True</td>
+                <td>@item.False</td>
+                <td>@item.Null</td>
+                <td>%@item.Scor</td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="row">
+    <div class="title">
+        <h4><strong>Konu Bazlı Analiz</strong> </h4>
+    </div>
+    <div class="subject-Analyc ">
+        <table class=col-12>
+            <tr>
+                <th scope="col">Konu Adı</th>
+                <th scope="col">Soru Sayısı</th>
+                <th scope="col">Doğru Sayısı</th>
+                <th scope="col">Yanlış Sayısı</th>
+                <th scope="col">Boş Sayısı</th>
+                <th scope="col">Başarı Oranı</th>                                                                  
+
+            </tr>
+            @foreach (var item in Model.scors)
+            {
+                var total = (item.False + item.True + item.Null);
+                <tr>
+                    <td scope="col">@item.Exam.Subject.Name</td>
+                    <td scope="col">@total</td>
+                    <td scope="col">@item.True</td>
+                    <td scope="col">@item.False</td>
+                    <td scope="col">@item.Null</td>
+                    <td scope="col">%@item.Scor</td>
+
+                </tr>
+            }
+          
+        </table>
+    </div>
+
+</div>

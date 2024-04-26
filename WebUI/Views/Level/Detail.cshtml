@@ -1,0 +1,45 @@
+﻿@model LevelModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3"><strong>Seviye</strong> Düzenleme Sayfası</h1>
+        <div class="row">
+            <form asp-controller="Level" asp-action="Update" method="post">
+                <div class="edit-table text-center">
+                    <div class="form-group row d-flex">
+                        <label for="name" class="col-sm-4 col-form-label">İsmi</label>
+                        <div class="col-sm-8">
+                            <input type="hidden" asp-for="@Model.Id" />
+                            <input class="form-dropdown text-center" type="text" asp-for="Name" value="@Model.Name" placeholder="Örneğin:9">
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Durum</label>
+                        <div class="col-sm-8">
+                            <select class="form-dropdown" name="Condition">
+                                @if (Model.Condition == true)
+                                {
+                                    <option value="True" selected>Aktif</option>
+                                    <option value="False">Pasif</option>
+                                }
+                                else if (Model.Condition == false)
+                                {
+                                    <option value="False" selected>Pasif</option>
+                                    <option value="True">Aktif</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="cls_btn" class="upper_btn " type="submit">
+                            <strong>Kaydet </strong><br>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</main>

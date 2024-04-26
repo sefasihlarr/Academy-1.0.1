@@ -1,0 +1,37 @@
+﻿@model GuardianModel
+<div class="col-md-8 col-xl-4">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Veli Bilgileri</h5>
+        </div>
+        <div class="card-body">
+
+            <div style="margin: 10px;">
+                <strong>İsim:</strong>
+                <input type="text" class="form-control" asp-for="@Model.GuardianName" value="@Model.GuardianName">
+            </div>
+            <div style="margin: 10px;">
+                <strong>Soyisim:</strong>
+                <input type="text" class="form-control" asp-for="@Model.GuardianSurName"  value="@Model.GuardianSurName">
+            </div>
+            <div style="margin: 10px;">
+                <strong>Telefon</strong>
+                <input type="text" class="form-control" asp-for="@Model.GuardianPhone" value="@Model.GuardianPhone">
+            </div>
+            <hr />
+            <label>Veli 2</label>
+            <div style="margin: 10px;">
+                <strong>E-posta</strong>
+                <input type="text" class="form-control" asp-for="@Model.GuardianName2" value="@Model.GuardianName2">
+            </div>
+            <div style="margin: 10px;">
+                <strong>Telefon</strong>
+                <input type="text" class="form-control" asp-for="@Model.GuardianSurName2" value="@Model.GuardianSurName2">
+            </div>
+            <div style="margin: 10px;">
+                <strong>E-posta</strong>
+                <input type="text" class="form-control" asp-for="@Model.GuardianPhone2"  value="@Model.GuardianPhone2">
+            </div>
+        </div>
+    </div>
+</div>

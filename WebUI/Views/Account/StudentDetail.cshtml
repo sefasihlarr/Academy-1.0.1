@@ -1,0 +1,94 @@
+﻿@model AppUserModel
+
+@{
+    ViewData["Title"] = "StudentDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main" style="background-color: #E9F2FF;">
+
+    <main class="content" style="background-color: #E9F2FF;">
+        <div class="container-fluid p-0">
+
+            <div class="mb-3">
+                <h1 class="h3 d-inline align-middle">Profil</h1>
+            </div>
+            <form asp-controller="Account" asp-action="UpdateUser" method="post">
+                <input type="hidden" asp-for="@Model.Id" value="@Model.Id"/>
+                <input type="hidden" asp-for="@Model.ClassId" value="@Model.Class.Id"/>
+                <input type="hidden" asp-for="@Model.BranchId" value="@Model.Branch.Id"/>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-4 col-xl-4">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Profil kartı</h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <img src="/Template/assets/meta_logo_2.png" alt="Resim" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+                                <h5 class="card-title mb-0">@Model.Name</h5>
+                                <div class="text-muted mb-2">@Model.SurName</div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="h6 card-title">Kayıtlı bilgileri</h5>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-1"><span data-feather="user" class="feather-sm me-1"></span> İsim Soyisim: @Model.Name @Model.SurName</li>
+                                    <li class="mb-1"><span data-feather="mail" class="feather-sm me-1"></span> E-posta: <a href="#">@Model.Email</a></li>
+                                    <li class="mb-1"><span data-feather="briefcase" class="feather-sm me-1"></span> Sınıf: <a href="#"></a></li>
+                                    <li class="mb-1"><span data-feather="briefcase" class="feather-sm me-1"></span> Sube: <a href="#"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Öğrenci Bilgileri</h5>
+                            </div>
+                            <div class="card-body">
+                                <div style="margin: 10px;">
+                                    <strong>Kullanıcı Adı:</strong>
+                                    <input type="text" class="form-control" asp-for="@Model.UserName" value="@Model.UserName">
+                                </div>
+                                <div style="margin: 10px;">
+                                    <strong>Tc:</strong>
+                                    <input type="text" class="form-control" asp-for="@Model.Tc"  value="@Model.Tc">
+                                </div>
+                                <div style="margin: 10px;">
+                                    <strong>Ad:</strong>
+                                    <input type="text" class="form-control" asp-for="@Model.Name"  value="@Model.Name">
+                                </div>
+                                <div style="margin: 10px;">
+                                    <strong>Soyad:</strong>
+                                    <input type="text" class="form-control" asp-for="@Model.SurName"  value="@Model.SurName">
+                                </div>
+                                <div style="margin: 10px;">
+                                    <strong>Sınıf</strong>
+                                    <input type="text" class="form-control" asp-for="@Model.Class.Name"  value="@Model.Class.Name">
+                                </div>
+                                <div style="margin: 10px;">
+                                    <strong>Şube</strong> 
+                                    <input type="text" class="form-control" asp-for="@Model.Branch.Name"  value="@Model.Branch.Name">
+                                </div>
+                                <div style="margin: 10px;">
+                                    <strong>Telefon</strong>
+                                    <input type="text" class="form-control" asp-for="@Model.PhoneNumber" value="@Model.PhoneNumber">
+                                </div>
+                                <div style="margin: 10px;">
+                                    <strong>E-posta</strong>
+                                    <input type="text" class="form-control" asp-for="@Model.Email"  value="@Model.Email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @await Component.InvokeAsync("GuardianForm")
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+

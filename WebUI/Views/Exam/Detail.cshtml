@@ -1,0 +1,58 @@
+﻿@model ExamModel
+@{
+    ViewData["Title"] = "Detail";
+}
+<div>
+    <main class="content">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-3"><strong>Sınav</strong> Düzenleme Sayfası</h1>
+            <div class="row">
+                <div class="edit-table text-center">
+
+                    <form asp-controller="Exam" asp-action="Update" method="post">
+
+                        <input type="hidden" value="@Model.Id" name="id" />
+                        <div class="form-group row d-flex">
+                            <label for="name" class="col-sm-4 col-form-label">Sınav Başlığı</label>
+                            <div class="col-sm-6">
+                                <input class="form-dropdown text-center" asp-for="@Model.Title" value="@Model.Title" type="text" placeholder="Örneğin:Üslü Sayılar">
+                            </div>
+                            <label for="name" class="col-sm-4 col-form-label">Sınav Açıklaması</label>
+                            <div class="col-sm-6">
+                                <textarea style="height: 250px;" asp-for="@Model.Description" class="form-dropdown" type="input">@Model.Description</textarea>
+                            </div>
+
+                            <label for="Ders" class="col-sm-4 col-form-label">Sınıf</label>
+                            <div class="col-sm-6">
+                                @await Component.InvokeAsync("ClassList")
+                            </div>
+                            <label for="Ders" class="col-sm-4 col-form-label">Şube</label>
+                            <div class="col-sm-6">
+                                @await Component.InvokeAsync("BranchList")
+                            </div>
+                            <label for="Ders" class="col-sm-4 col-form-label">Ders</label>
+                            <div class="col-sm-6">
+                                @await Component.InvokeAsync("LessonList")
+                            </div>
+                            <label for="Ders" class="col-sm-4 col-form-label">Konu</label>
+                            <div class="col-sm-6">
+                                @await Component.InvokeAsync("SubjectList")
+                            </div>
+                            <label for="Ders" class="col-sm-4 col-form-label">Durum</label>
+                            <div class="col-sm-6">
+                                <select class="form-dropdown" asp-for="@Model.Condition">
+                                    <option value="True">Aktif</option>
+                                    <option value="False">Pasif</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="design-yetkili-btn" class="upper_btn " type="submit">
+                            <strong>Kaydet </strong><br>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>

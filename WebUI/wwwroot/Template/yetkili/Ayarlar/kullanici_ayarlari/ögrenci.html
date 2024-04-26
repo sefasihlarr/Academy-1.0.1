@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="&amp" ;>
+	<meta name="author" content="">
+	<meta name="keywords" content="">
+	<meta name=”viewport” content=”” />
+	<link rel="shortcut icon" href="../assets/meta_logo_2.png" />
+	<link rel="canonical" href="" />
+	<title>Yetkili Paneli</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	<link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+
+	<link href="../../../assets/app.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+
+<body>
+	<div class="wrapper">
+	
+
+		
+			
+			<main class="content d-flex flex-wrap justify-content-between">
+				<div  class="container-fluid p-0">
+
+					<h1 class="h3 mb-3"><strong>Yetkili</strong> Öğrenciler Sayfası</h1>
+
+					<div class="row">
+						<div class="d-flex">
+							<div class="w-100">
+								<div class="row">
+									
+									<div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+										<div class="row">
+											<div class="card-header col-10">
+												<h5 class="card-title mb-0">Öğrenciler</h5>
+											</div>
+											<div  class="yetkili_btn col-2">
+												
+												<a  style="color:white"id="myBtn">
+													<strong  >Yeni Öğrenci Ekle </strong>
+												
+												</a>
+											</div>
+										</div>
+										
+										<table class="table my-0 text-center">
+											<thead>
+												
+												<tr>
+													<th >ID</th>
+													<th>TC Kimlik</th>
+													<th>Ad</th>
+													<th>Soyad</th>
+													<th>Sınıf</th>
+													<th>Şube</th>
+													<th>Telefon</th>
+													<th >Ekleyen ve tarihi</th>
+													<th >Değiştiren ve tarihi</th>
+													<th>Aktiflik durumu</th>
+													<th>Düzenle veya sil</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td >1</td>
+													<td>921412</td>
+													<td>Ahmet</td>
+													<td>Çıtak</td>
+													<td>9</td>
+													<td>B</td>
+													<td>05348384</td>
+													<td >İsim-21/01/2021</td>
+													<td >İsim-31/06/2021</td>
+													<td><span class="badge bg-success">Aktif</span></td>
+													<td><a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+													<a><i class="align-middle m-2" data-feather="trash-2"style="color: red;"></i></a></td>
+												</tr>
+												<tr>
+													<td >2</td>
+													<td>12421</td>
+													<td>Ece</td>
+													<td>Sah</td>
+													<td>10</td>
+													<td>F</td>
+													<td>0214384</td>
+													<td >İsim-21/01/2021</td>
+													<td >İsim-31/06/2021</td>
+													<td><span class="badge bg-success">Aktif</span></td>
+													<td><a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+													<a><i class="align-middle m-2" data-feather="trash-2"style="color: red;"></i></a></td>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="popup">
+					<div id="myModal" class="modal">
+						<div class="medium-modal" id="modal-content1">
+							<span class="close">&times;</span>
+							<h2 class="modal-title text-center"><strong> Öğrenci Ekle</strong></h2>
+							<form>
+									<div class="row">
+										<label for="name" class="col-sm-3 col-form-label">İsmi</label>
+													<div class="col-sm-9">
+															<input class="answer-place text-center"type="text" placeholder="Örneğin:Ahmet">
+													</div>
+									</div>
+									<div class="row">
+										<label for="name" class="col-sm-3 col-form-label">Soyİsmi</label>
+											<div class="col-sm-9">
+													<input class="answer-place text-center"type="text" placeholder="Örneğin:Yılmaz">
+											</div>
+									</div>
+									<div class="row">
+										<label for="name" class="col-sm-3 col-form-label">Tc Kimlik</label>
+											<div class="col-sm-9">
+												<input class="answer-place text-center"type="text">
+											</div>
+									</div>
+									<div class="row">
+										<label for="tc" class="col-sm-3 col-form-label">Telefon</label>
+											<div class="col-sm-9">
+													<input class="answer-place"type="text">
+											</div>	
+	
+									</div>
+									<div class="row">
+										<label for="Ders" class="col-sm-3 col-form-label">Sınıf</label>
+											<div class="col-sm-9">
+												<select  class="answer-place">
+													<option  value="">9</option>
+													<option  value="">10</option>
+													<option  value="">11</option>
+												</select>
+											</div>
+									</div>
+									<div class="row">
+										<label for="Ders" class="col-sm-3 col-form-label">Şube</label>
+											<div class="col-sm-9">
+												<select  class="answer-place">
+													<option  value="">A</option>
+													<option  value="">B</option>
+												</select>
+											</div>
+									</div>
+							</form>					
+							<button id="upper" class="upper_btn">
+								<strong >İleri </strong>
+							</button>
+								
+						</div>
+						<div class="modal-content2" id="modal-content2">
+							<span class="close"></span>
+							<h2 class="modal-title text-center"><strong> Öğrenci Veli Ekle</strong></h2>
+							<form>
+									<div class="row">
+										<label for="name" class="col-sm-3 col-form-label">Veli İsmi</label>
+													<div class="col-sm-9">
+															<input class="answer-place text-center"type="text" placeholder="Örneğin:Ahmet">
+													</div>
+									</div>
+									<div class="row">
+										<label for="name" class="col-sm-3 col-form-label">Veli Soyİsmi</label>
+											<div class="col-sm-9">
+													<input class="answer-place text-center"type="text" placeholder="Örneğin:Yılmaz">
+											</div>
+									</div>
+									<div class="row">
+										<label for="name" class="col-sm-3 col-form-label">Veli Tc Kimlik</label>
+											<div class="col-sm-9">
+												<input class="answer-place text-center"type="text">
+											</div>
+									</div>
+									<div class="row">
+										<label for="tc" class="col-sm-3 col-form-label">Veli Telefon</label>
+											<div class="col-sm-9">
+													<input class="answer-place"type="text">
+											</div>	
+	
+									</div>
+									<div class="row">
+										<label for="tc" class="col-sm-3 col-form-label">Veli Telefon 2</label>
+											<div class="col-sm-9">
+													<input class="answer-place"type="text">
+											</div>	
+	
+									</div>
+									
+							</form>					
+							<div class="row">
+								<div class="col-9">
+									<button  class="lower_btn" id="lower_btn">
+										<strong >Geri Dön</strong>
+									</button>
+								</div>
+								<div class="col-3">
+									<button  id="cls_btn">
+										<strong >Kaydet</strong>
+									</button>
+		
+								</div>
+							</div>
+								
+						</div>
+                    </div>
+
+				</div>
+			</main>
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="https://www.metaakdeniz.com" target="_blank"><strong>Meta
+										Akdeniz Yazılım</strong></a> &copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://www.metaakdeniz.com"
+										target="_blank">Hakkında</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+
+	<script src="../../../assets/app.js"></script>
+	<script src="../../../assets/js/custom.js"></script>
+
+</body>
+
+</html>

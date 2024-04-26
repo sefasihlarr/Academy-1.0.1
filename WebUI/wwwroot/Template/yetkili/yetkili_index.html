@@ -1,0 +1,766 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="&amp" ;>
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <link rel="shortcut icon" href="../assets/meta_logo_2.png" />
+
+    <link rel="canonical" href="" />
+
+    <title>Yetkili Paneli</title>
+    <link href='https://fonts.googleapis.com/css?family=Work+Sans:300,400,600&Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+    <link href="../assets/app.css" rel="stylesheet">
+    <link href="../assets/app.js" rel="stylesheet">
+    <link href="../assets/css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar linear-background pt-4">
+				<a class="sidebar-brand d-flex align-items-center" href="yetkili_index.html">
+					<img src="../assets/images/example-logo.svg" class="logo-sm mr-15">
+					<span class="align-middle logo-title-sm"> LOGO</span>
+				</a>
+
+				<ul class="sidebar-nav mt-5">
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="https://localhost:44382">
+							<i class="align-middle" data-feather="home"></i> <span class="align-middle">Anasayfa</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="yetkili_profil_edit.html">
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profil</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="../ogrenci/ogrenci_sinavlarim.html">
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlarım</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="../ogrenci/ogrenci_sonuclarim.html">
+							<i class="align-middle" data-feather="eye"></i> <span class="align-middle">Sonuçlarım</span>
+						</a>
+					</li>
+					<li class="sidebar-item ">
+						<a class="sidebar-link dropdown-btn" href="#">
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">
+								Yetkili
+								işlemleri
+							</span>
+							<i class="align-middle" data-feather="chevron-down"></i>
+						</a>
+						<ul class="sidebar-dropdown  list-unstyled">
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/yetkili_islem/yetkili_siniflar.html">
+									<i class="align-middle" data-feather="users"></i> <span class="align-middle">Sınıflar</span>
+								</a>
+							</li>
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/yetkili_islem/yetkili_subeler.html">
+									<i class="align-middle" data-feather="users"></i> <span class="align-middle">Şubeler</span>
+								</a>
+							</li>
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/yetkili_islem/yetkili_dersler.html">
+									<i class="align-middle" data-feather="book"></i> <span class="align-middle">Dersler</span>
+								</a>
+							</li>
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/yetkili_islem/yetkili_konular.html">
+									<i class="align-middle" data-feather="server"></i> <span class="align-middle">Konular</span>
+								</a>
+							</li>
+
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/yetkili_islem/yetkili_dereceler.html">
+									<i class="align-middle" data-feather="list"></i> <span class="align-middle">Dereceler</span>
+								</a>
+							</li>
+
+							
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/yetkili_islem/yetkili_soru.html">
+									<i class="align-middle" data-feather="plus-circle"></i> <span class="align-middle">Sorular</span>
+								</a>
+							</li>
+
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/yetkili_islem/yetkili_sinavlar.html">
+									<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlar</span>
+								</a>
+							</li>
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/yetkili_islem/yetkili_soru_cözümler.html">
+									<i class="align-middle" data-feather="underline"></i> <span class="align-middle">Soru Çözümleri
+									</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sidebar-item sidebar-item">
+						<a class="sidebar-link dropdown-btn" href="#">
+							<i class="align-middle" data-feather="settings"></i> <span class="align-middle">
+								Kullanıcı Ayarları
+							</span>
+							<i class="align-middle" data-feather="chevron-down"></i>
+						</a>
+						<ul class="sidebar-dropdown  list-unstyled">
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/Ayarlar/kullanici_ayarlari/ögrenci.html">
+									<i class="align-middle" data-feather="users"></i> <span class="align-middle">Öğrenciler</span>
+								</a>
+							</li>
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/Ayarlar/kullanici_ayarlari/görevli.html">
+									<i class="align-middle" data-feather="users"></i> <span class="align-middle">Görevliler</span>
+								</a>
+							</li>
+							<li class="sidebar-item sidebar-dropdown-item">
+								<a class="sidebar-link" href="../yetkili/Ayarlar/kullanici_ayarlari/Roller.html">
+									<i class="align-middle" data-feather="award"></i> <span class="align-middle">Görevlendirmeler</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="">
+							<i class="align-middle" data-feather="info"></i> <span class="align-middle">S.S.S</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="main" style="background-color: #E9F2FF;">
+			<nav class="navbar navbar-expand navbar-light navbar-bg d-block">
+				<div class="navbar-top justify-content-between d-flex align-items-center w-100">
+					<a class="sidebar-toggle js-sidebar-toggle">
+						<i class="hamburger align-self-center"></i>
+					</a>
+					<div class="navbar-mid">
+						<div class="navbar-searchbar-container d-flex align-items-center">
+							<a href="#" class="searchbar-button">
+								<i class="bi-search bold searchbar-icon"></i>
+							</a>
+							<label for="searchbar-input" class="searchbar-input-container">
+								<input type="text" id="searchbar-input" class=" searchbar-input" placeholder="Ne Aramıştınız ?">
+							</label>
+						</div>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="navbar-nav navbar-align">
+							<li class="nav-item dropdown">
+								<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown"
+								   data-bs-toggle="dropdown">
+									<div class="position-relative">
+										<i class="align-middle" data-feather="bell"></i>
+										<span class="indicator">1</span>
+									</div>
+								</a>
+								<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+									 aria-labelledby="alertsDropdown">
+									<div class="dropdown-menu-header">
+										1 Yeni bildirim
+									</div>
+									<div class="list-group">
+										<a href="#" class="list-group-item">
+											<div class="row g-0 align-items-center">
+												<div class="col-2">
+													<i class="text-warning" data-feather="bell"></i>
+												</div>
+												<div class="col-10">
+													<div class="text-dark">Bildirim başlığı</div>
+													<div class="text-muted small mt-1">Bildirim metni</div>
+													<div class="text-muted small mt-1">1 dakika önce</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="dropdown-menu-footer">
+										<a href="#" class="text-muted">Tüm bildirimleri temizle</a>
+									</div>
+								</div>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-icon dropdown-toggle" href="yetkili_mesajlar.html" id="messagesButton">
+									<div class="position-relative">
+										<i class="align-middle" data-feather="message-circle"></i>
+										<span class="indicator">1</span>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
+								   data-bs-toggle="dropdown"></a>
+
+								<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
+								   data-bs-toggle="dropdown">
+									<img src="../assets/meta_logo_2.png" class="avatar img-fluid rounded me-1"
+										 alt="profil resmi" /> <span class="text-dark">Yetkili ismi</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-end">
+									<a class="dropdown-item" href="yetkili_profil_edit.html">
+										<i class="align-middle me-1" data-feather="user"></i> Profil
+									</a>
+									<a class="dropdown-item" href="yetkili_index.html">
+										<i class="align-middle me-1"
+										   data-feather="settings"></i>Ayarlar
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="../giris.html">Çıkış</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="navbar-bottom">
+					<div class="personel-container d-flex align-items-center">
+						<div class="personel-photo-container overflow-hidden d-flex align-items-center">
+							<img src="../assets/images/logo-usr.svg" alt="" class="w-100">
+						</div>
+						<div class="personel-info-container">
+							<div class="personel-status">Admin</div>
+							<div class="personel-name">Özlem Özkaya Ceylan</div>
+						</div>
+					</div>
+				</div>
+
+			</nav>
+			<main class="content d-flex flex-wrap justify-content-between">
+
+
+				<div class="custom-cards-container flex-2  container-sm ">
+					<!DOCTYPE html>
+					<html lang="en">
+					
+					<head>
+						<meta charset="utf-8">
+						<meta http-equiv="X-UA-Compatible" content="IE=edge">
+						<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+						<meta name="description" content="&amp" ;>
+						<meta name="author" content="">
+						<meta name="keywords" content="">
+						<meta name=”viewport” content=”” />
+						<link rel="shortcut icon" href="../assets/meta_logo_2.png" />
+						<link rel="canonical" href="" />
+						<title>Yetkili Paneli</title>
+						<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+						<link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+					
+						<link href="../assets/app.css" rel="stylesheet">
+					
+						<link rel="stylesheet" href="../assets/css/custom.css">
+					</head>
+					
+					
+						<h1 class="h3 mb-3 " style="margin:10px 0px 10px 0px"><strong>Yetkili</strong> Anasayfası</h1>
+					
+										<div class="row">
+											<div class="col-xl-6 col-xxl-5 d-flex">
+												<div class="w-100">
+													<div class="row">
+														<div class="col-sm-6">
+															<div class="card">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col mt-0">
+																			<h5 class="card-title">Öğrenci Sayısı</h5>
+																		</div>
+					
+																		<div class="col-auto">
+																			
+																		</div>
+																	</div>
+																	<h1 class="mt-1 mb-3">2.382</h1>
+																	
+																</div>
+															</div>
+															<div class="card">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col mt-0">
+																			<h5 class="card-title">Sınav Sayısı</h5>
+																		</div>
+					
+																		<div class="col-auto">
+																			
+																		</div>
+																	</div>
+																	<h1 class="mt-1 mb-3">250</h1>
+																	
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<div class="card">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col mt-0">
+																			<h5 class="card-title">Sınıf Sayısı</h5>
+																		</div>
+					
+																		<div class="col-auto">
+																			
+																		</div>
+																	</div>
+																	<h1 class="mt-1 mb-3">100</h1>
+																	
+																</div>
+															</div>
+															<div class="card">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col mt-0">
+																			<h5 class="card-title">Öğretmen Sayısı</h5>
+																		</div>
+					
+																		
+																	</div>
+																	<h1 class="mt-1 mb-3">64</h1>
+																	
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+					
+											<div class="col-xl-6 col-xxl-7">
+												<div class="card flex-fill w-100">
+													<div class="card-header">
+					
+														<h5 class="card-title mb-0">Aylık Katılım</h5>
+													</div>
+													<div class="card-body py-3">
+														<div class="chart chart-sm">
+															<canvas id="chartjs-dashboard-line"></canvas>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+					<div class="row">
+						<div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+					
+									<h5 class="card-title mb-0">Cinsiyet Oranı</h5>
+								</div>
+								<div class="card-body d-flex">
+									<div class="align-self-center w-100">
+										<div class="py-3">
+											<div class="chart chart-xs">
+												<canvas id="chartjs-dashboard-pie"></canvas>
+											</div>
+										</div>
+					
+										<table class="table mb-0">
+											<tbody>
+												<tr>
+													<td>Kız</td>
+													<td class="text-end">4306</td>
+												</tr>
+												
+												<tr>
+													<td>Erkek</td>
+													<td class="text-end">1689</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+					
+									<h5 class="card-title mb-0">Real-Time</h5>
+								</div>
+								<div class="card-body px-4">
+									<canvas id="class-chart" style=" width: 100%;height: 350px;"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
+							<div class="card flex-fill">
+								<div class="card-header">
+					
+									<h5 class="card-title mb-0">Takvim</h5>
+								</div>
+								<div class="card-body d-flex">
+									<div class="align-self-center w-100">
+										<div class="chart">
+											<div id="datetimepicker-dashboard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
+					
+									<h5 class="card-title mb-0"> Başarı Sıralama</h5>
+								</div>
+								<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>Sıra</th>
+											<th class="d-none d-xl-table-cell">İsim</th>
+											<th class="d-none d-xl-table-cell">Soyisim</th>
+											<th class="d-none d-xl-table-cell">Sınıf</th>
+											<th class="d-none d-md-table-cell">Şube</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span class="badge bg-warning">1</span></td>
+											<td class="d-none d-xl-table-cell">Ahmet </td>
+											<td class="d-none d-xl-table-cell">Çıtak</td>
+											<td><span >9</td>
+											<td class="d-none d-md-table-cell">A</td>
+										</tr>
+										<tr>
+											<td><span class="badge bg-warning">2</span></td>
+											<td class="d-none d-xl-table-cell">Ece</td>
+											<td class="d-none d-xl-table-cell">Sah</td>
+											<td><span >11</td>
+											<td class="d-none d-md-table-cell">D</td>
+										</tr>
+										<tr>
+											<td><span class="badge bg-warning">3</span></td>
+											<td class="d-none d-xl-table-cell">Mehmet</td>
+											<td class="d-none d-xl-table-cell">Haşim</td>
+											<td><span >10</td>
+											<td class="d-none d-md-table-cell">C</td>
+										</tr>
+										<tr>
+											<td><span class="">4</span></td>
+											<td class="d-none d-xl-table-cell">Aysel</td>
+											<td class="d-none d-xl-table-cell">Cantürk</td>
+											<td>12</span></td>
+											<td class="d-none d-md-table-cell">E</td>
+										</tr>
+										<tr>
+											<td><span class="">5</span></td>
+											<td class="d-none d-xl-table-cell">Can</td>
+											<td class="d-none d-xl-table-cell">Marangozoğlu</td>
+											<td>9</span></td>
+											<td class="d-none d-md-table-cell">B</td>
+										</tr>
+										<tr>
+											<td><span class="">6</span></td>
+											<td class="d-none d-xl-table-cell">Mustafa</td>
+											<td class="d-none d-xl-table-cell">Yılmaz</td>
+											<td>11</span></td>
+											<td class="d-none d-md-table-cell">A</td>
+										</tr>
+										<tr>
+											<td><span class="">7</span></td>
+											<td class="d-none d-xl-table-cell">Mehmet</td>
+											<td class="d-none d-xl-table-cell">Hançerli</td>
+											<td>12</span></td>
+											<td class="d-none d-md-table-cell">C</td>
+										</tr>
+										<tr>
+											<td><span class="badge bg-danger">8</span></td>
+											<td class="d-none d-xl-table-cell">Zeynep</td>
+											<td class="d-none d-xl-table-cell">Döken</td>
+											<td>10</span></td>
+											<td class="d-none d-md-table-cell">A</td>
+										</tr>
+										<tr>
+											<td><span class="badge bg-danger">9</span></td>
+											<td class="d-none d-xl-table-cell">Elif</td>
+											<td class="d-none d-xl-table-cell">Yalçın</td>
+											<td>9</span></td>
+											<td class="d-none d-md-table-cell">C</td>
+										</tr>
+										<tr>
+											<td><span class="badge bg-danger">10</span></td>
+											<td class="d-none d-xl-table-cell">İsmail</td>
+											<td class="d-none d-xl-table-cell">Kordiken</td>
+											<td>12</span></td>
+											<td class="d-none d-md-table-cell">E</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="col-12 col-lg-4 col-xxl-3 d-flex">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+					
+									<h5 class="card-title mb-0">Monthly Sales</h5>
+								</div>
+								<div class="card-body d-flex w-100">
+									<div class="align-self-center chart chart-lg">
+										<canvas id="chartjs-dashboard-bar"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+			</main>
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="https://www.metaakdeniz.com" target="_blank">
+									<strong>
+										Meta
+										Akdeniz Yazılım
+									</strong>
+								</a> &copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://www.metaakdeniz.com"
+									   target="_blank">Hakkında</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+
+	<script src="../assets/app.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+			// Line chart
+			new Chart(document.getElementById("chartjs-dashboard-line"), {
+				type: "line",
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [{
+						label: "Sales ($)",
+						fill: true,
+						backgroundColor: gradient,
+						borderColor: window.theme.primary,
+						data: [
+							2115,
+							1562,
+							1584,
+							1892,
+							1587,
+							1923,
+							2566,
+							2448,
+							2805,
+							3438,
+							2917,
+							3327
+						]
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					tooltips: {
+						intersect: false
+					},
+					hover: {
+						intersect: true
+					},
+					plugins: {
+						filler: {
+							propagate: false
+						}
+					},
+					scales: {
+						xAxes: [{
+							reverse: true,
+							gridLines: {
+								color: "rgba(0,0,0,0.0)"
+							}
+						}],
+						yAxes: [{
+							ticks: {
+								stepSize: 1000
+							},
+							display: true,
+							borderDash: [3, 3],
+							gridLines: {
+								color: "rgba(0,0,0,0.0)"
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Pie chart
+			new Chart(document.getElementById("chartjs-dashboard-pie"), {
+				type: "pie",
+				data: {
+					labels: ["Kız",  "Erkek"],
+					datasets: [{
+						data: [4306, 1689],
+						backgroundColor: [
+							window.theme.primary,
+							window.theme.danger
+						],
+						borderWidth: 5
+					}]
+				},
+				options: {
+					responsive: !window.MSInputMethodContext,
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					cutoutPercentage: 75
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Bar chart
+			new Chart(document.getElementById("chartjs-dashboard-bar"), {
+				type: "bar",
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [{
+						label: "This year",
+						backgroundColor: window.theme.primary,
+						borderColor: window.theme.primary,
+						hoverBackgroundColor: window.theme.primary,
+						hoverBorderColor: window.theme.primary,
+						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+						barPercentage: .75,
+						categoryPercentage: .5
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					scales: {
+						yAxes: [{
+							gridLines: {
+								display: false
+							},
+							stacked: false,
+							ticks: {
+								stepSize: 20
+							}
+						}],
+						xAxes: [{
+							stacked: false,
+							gridLines: {
+								color: "transparent"
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
+			var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
+			document.getElementById("datetimepicker-dashboard").flatpickr({
+				inline: true,
+				prevArrow: "<span title=\"Previous month\">&laquo;</span>",
+				nextArrow: "<span title=\"Next month\">&raquo;</span>",
+				defaultDate: defaultDate
+			});
+		});
+	</script>
+	<script>
+        const ctx = document.getElementById('class-chart');
+    
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: ['9.Sınıf', '10.Sınıf',"11.Sınıf","12.Sınıf"],
+            datasets: [{
+                label: 'Sınıf Sayıları',
+                data: [16,13,11,14],
+				backgroundColor:[
+				'rgba(255, 99, 132, 0.2)',
+        		'rgba(54, 162, 235, 0.2)',
+        		'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',],
+                borderWidth: 1
+				
+
+			
+			}],
+			
+            },
+			options: {
+    responsive: false,
+    scales: {
+      xAxes: [{
+        ticks: {
+          maxRotation: 90,
+          minRotation: 80
+        },
+          gridLines: {
+          offsetGridLines: true // à rajouter
+        }
+      },
+      {
+        position: "top",
+        ticks: {
+          maxRotation: 90,
+          minRotation: 80
+        },
+        gridLines: {
+          offsetGridLines: true // et matcher pareil ici
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+            
+
+        });
+	</script>
+
+</body>
+
+</html>

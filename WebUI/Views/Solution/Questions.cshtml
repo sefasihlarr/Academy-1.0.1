@@ -1,0 +1,197 @@
+﻿@model QuestionListModel
+@{
+    ViewData["Title"] = "Questions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Soru Çözüm Sayfası</h1>
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="page-search">
+                            <div class="search-place">
+                                <button class="toggle-button dropdown" data-feather="arrow-left"></button>
+                                <span class="toggle-content"><strong>Matematik</strong></span>
+                                <button class="toggle-button" data-feather="arrow-right"></button>
+                            </div>
+                            <div class="search-place">
+                                <button data-feather="arrow-left"></button>
+                                <span><strong>Üslü Sayılar</strong></span>
+                                <button data-feather="arrow-right"></button>
+
+                            </div>
+                            <h1 class="text-center">Matematik Soruları</h2>
+                        </div>
+
+                        <div class="questions-container">
+                            @foreach (var item in Model.Questions)
+                            {
+                                if (item.SolutionCondition == false)
+                                {
+                                    <div class="question-content ">
+                                        <a class="text-warning" href="/Solution/Index/@item.Id"><strong>Çözüm  Girişi Yapılmadı</strong></a>
+                                        <div class="question-empty">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h4><strong>Soru-@item.Id</strong></h4>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <i class="bi bi-exclamation-circle"></i>
+                                                    <a href="../yetkili_islem_düzenle/yetkili_soru_düzenle.html" id="question-review-icon">
+                                                        <i class="bi bi-pencil-square">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                            </svg>
+                                                        </i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            @if (item.ImageUrl!=null)
+                                            {
+                                                <img src="/Template/questions/@item.ImageUrl" class="question-image">
+                                                   
+                                            }
+                                          
+                                            <span class="question-info"><strong>@item.QuestionText</strong></span><br>
+                                            <span class="question-info"><strong>@item.Text</strong></span>
+                                            <div class="question-answer-list">
+                                                @foreach (var options in item.Options.Where(x => x.QuestionId == item.Id).ToList())
+                                                {
+                                                    <span><strong>@options.Name)</strong> @options.Text</span>
+
+                                                    <br>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                else
+                                {
+                                    <div class="question-content">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4><strong>Soru-@item.Id</strong></h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                            </div>
+                                        </div>
+                                        @if (item.ImageUrl!=null)
+                                        {
+                                            <img src="/Template/questions/@item.ImageUrl" class="question-image">
+                                            
+                                        }
+                        
+                                        <span class="question-info"><strong>@item.QuestionText</strong></span><br>
+                                        <span class="question-info"><strong>@item.Text</strong></span>
+                                        
+                                        <div class="question-answer-list">
+                                            @foreach (var options in item.Options.Where(x => x.QuestionId == item.Id).ToList())
+                                            {
+                                                <span><strong>@options.Name)</strong> @options.Text</span>
+
+                                                <br>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popup">
+                <div id="myModal" class="modal">
+
+                    <div class="modal-content" id="modal-content">
+                        <span class="close"></span>
+                        <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5><strong> Soru Metini:</strong> </h5>
+                                <div class="question-text">
+                                    Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                                    yüzyılda yaşamış bir tarihçi ve aynı
+                                    zamanda bir askerdir. Atina’da doğmuştur.
+                                    Tukididis, Atina ve Sparta arasındaki Peloponnes
+                                    Savaşı boyunca (M.Ö. 431 – 404)
+                                    yüzyılda yaşamış bir tarihçi ve aynı
+                                    zamanda bir askerdir. Atina’da doğmuştur.
+                                    Tukididis, Atina ve Sparta arasındaki Peloponnes
+                                    Savaşı boyunca (M.Ö. 431 – 404)
+                                    Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                                    yüzyılda yaşamış bir tarihçi ve aynı
+                                    zamanda bir askerdir. Atina’da doğmuştur.
+                                    Tukididis, Atina ve Sparta arasındaki Peloponnes
+                                    Savaşı boyunca (M.Ö. 431 – 404)
+                                    yüzyılda yaşamış bir tarihçi ve aynı
+                                    zamanda bir askerdir. Atina’da doğmuştur.
+                                    Tukididis, Atina ve Sparta arasındaki Peloponnes
+                                    Savaşı boyunca (M.Ö. 431 – 404)
+
+                                    Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                                    yüzyılda yaşamış bir tarihçi ve aynı
+                                    zamanda bir askerdir. Atina’da doğmuştur.
+                                    Tukididis, Atina ve Sparta arasındaki Peloponnes
+                                    Savaşı boyunca (M.Ö. 431 – 404)
+                                    yüzyılda yaşamış bir tarihçi ve aynı
+                                    zamanda bir askerdir. Atina’da doğmuştur.
+                                    Tukididis, Atina ve Sparta arasındaki Peloponnes
+                                    Savaşı boyunca (M.Ö. 431 – 404)
+
+
+                                </div>
+                                <button id="lowertwo" class="lower_btn" style="top:15%; height:12%; width: 25%;">
+                                    <strong>Geri Dön</strong>
+                                </button>
+
+                            </div>
+                            <div class="col-md-4">
+                                <h5><strong>Çözüm Metini:</strong> </h5>
+                                <textarea class=" big-text" type="text" placeholder="Cevap İçeriğini giriniz"></textarea>
+                                <div class="true-answer-select ">
+                                    <label for="">Doğru Şıkkı Seçiniz:</label>
+                                    <select name="" id="">
+                                        <option value="">A</option>
+                                        <option value="">B</option>
+                                        <option value="">C</option>
+                                        <option value="">D</option>
+                                        <option value="">E</option>
+
+                                    </select>
+                                    <input type="file" id="answerfileUpload">
+                                </div>
+
+
+
+                            </div>
+                            <div class="col-md-4 ">
+                                <h5><strong>Video:</strong> </h5>
+                                <video width="250" height="150" src="../../assets/Canın Ders Çalışmak İstemediğinde İzle.mp4" controls></video>
+
+                            </div>
+
+
+
+                            <button id="cls_btn" style="left: 90%; height:33px; width: 10%;" class="upper_btn">
+                                <strong>Kaydet </strong>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+

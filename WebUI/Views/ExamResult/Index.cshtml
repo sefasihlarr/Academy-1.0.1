@@ -1,0 +1,61 @@
+﻿@model CartModel
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<div class="text-center"><h1><strong>Sınav Sonuçlarım</strong></h1></div>
+<main class="content d-flex justify-content-between flex-wrap">
+    @if (Model != null)
+    {
+        @foreach (var item in Model.CartItems)
+        {
+            <div class="student-exam-result-content">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="student-exam-result-content-title col-12 ">
+                            <h4><strong>@item.Name</strong></h4>
+                        </div>
+                        <div class="student-exam-result-content-info  col-12">
+                            <strong>Ders:</strong>@item.LessonName
+                        </div>
+                        <div class="student-exam-result-content-info  col-12">
+                            <strong>Konu:</strong>@item.SubjectName
+                        </div>
+                        <div class="student-exam-result-content-score col-12 ">
+                            <strong>Puan:</strong>95
+                        </div>
+
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6 mt-3">
+                            <a href="/ExamResult/ResultQuestions/@item.ExamId" class="custom-card-button linear-background">
+                                Sorular <i class="bi bi-eye custom-card-icons"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <form action="/ExamResult/ExamScor/@item.ExamId" method="post">
+                                <input type="hidden" name="lessonId" value="@item.LessonId" />
+                                <input type="hidden" name="userId" value="@ViewBag.userId" />
+                                <button type="submit" class="linear-background" style="border:none;color:white;border-radius:15px;height:32px;width:100%;margin-top:10px;margin-left:10px">
+                                    Analiz <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        }
+    }
+
+
+
+
+</main>
+

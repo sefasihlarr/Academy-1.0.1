@@ -1,0 +1,22 @@
+﻿@model ScorListModel
+<div class="col-lg-5 ">
+    <table class="table">
+        <tr>
+            <th>Doğru Oranı:</th>
+            <td>%@Model.TotalTruePercentile</td>
+        </tr>
+        <tr>
+            <th>Yanlış Oranı:</th>
+            <td>%@Model.TotalFalsePercentile</td>
+        </tr>
+        <tr>
+            <th>Boş Oranı:</th>
+            <td>%@Model.TotalNullPercentile</td>
+        </tr>
+        <tr>
+            <th>Başarı Oranı:</th>
+            <td>%@Model.TotalScorPercentile</td>
+        </tr>
+
+    </table>
+</div>

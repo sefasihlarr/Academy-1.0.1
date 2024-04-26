@@ -1,0 +1,354 @@
+﻿@model ExamAnswerListModel
+@{
+    ViewData["Title"] = "ResultQuestions";
+    var TrueOption = 0;
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <h1 class="text-center"><strong> Sınav Sorularım</strong></h1>
+
+                    <div class="student-questions-container">
+                        <div class="row">
+                            <strong>Toplam Doğru:@Model.QuestionTrue</strong>
+                            <strong>Toplam Yanlış:@Model.QuestionFalse</strong>
+                            <strong>Toplam Boş:@Model.QuestionNull</strong>
+                            <div class="d-flex justify-content-between flex-wrap">
+                                @foreach (var item in Model.ExamAnswers.Where(x=>x.UserId==ViewBag.userId))
+                                {
+                                    if (@item.Option == null)
+                                    {
+                                        <div class="student-question-content-error">
+                                            <div class="row">
+                                                <div class="col-md-11">
+                                                    <h4><strong>Soru-@item.Question.Id</strong></h4>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <a href="/ExamResult/ResultVideo/@item.Question.Id">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+                                                        </svg>
+                                                    </a>
+
+                                                </div>
+                                                @if (item.Question.ImageUrl != null)
+                                                {
+                                                    <img style="width:70%;height:50%" src="/Template/questions/@item.Question.ImageUrl" />
+                                                }
+                                                <span class="question-info">
+                                                    @item.Question.Text
+                                                </span>
+                                                <span class="question-info">
+                                                    <strong>
+                                                        @item.Question.QuestionText
+                                                    </strong>
+                                                </span>
+
+                                                <div class="question-answer-list">
+                                                    @foreach (var option in item.Question.Options.OrderBy(x => x.Id))
+                                                    {
+                                                        <span><strong>@option.Name)</strong> @option.Text</span>
+                                                        <br />
+                                                    }
+
+                                                </div>
+                                                <div class="student-true-answers ">
+                                                    <strong>Sizin Cevabınız:</strong>Boş
+                                                    <strong>Doğru Cevap:</strong> @Model.CorrectAnswers[TrueOption]
+                                                    @{
+                                                        TrueOption++;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    else if (@item.Option.Name == @Model.CorrectAnswers[TrueOption])
+                                    {
+                                        <div class="student-question-content-true">
+                                            <div class="row">
+                                                <div class="col-md-11">
+                                                    <h4><strong>Soru-@item.Question.Id</strong></h4>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <a href="/ExamResult/ResultVideo/@item.Question.Id">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+                                                        </svg>
+                                                    </a>
+
+                                                </div>
+                                                @if (item.Question.ImageUrl!=null)
+                                                {
+                                                    <img style="width:70%;height:50%" src="/Template/questions/@item.Question.ImageUrl" />
+                                                }
+                                              
+                                                <span class="question-info">
+                                                    @item.Question.Text
+                                                </span>
+                                                <span class="question-info">
+                                                    <strong>
+                                                        @item.Question.QuestionText
+                                                    </strong>
+                                                </span>
+                                                <div class="question-answer-list">
+                                                    @foreach (var option in item.Question.Options.OrderBy(x=>x.Id))
+                                                    {
+                                                        <span><strong>@option.Name)</strong> @option.Text</span>
+                                                        <br />
+                                                    }
+
+                                                </div>
+                                                <div class="student-true-answers ">
+                                                    <strong>Sizin Cevabınız:</strong> @item.Option.Name
+                                                    <strong>Doğru Cevap:</strong> @Model.CorrectAnswers[TrueOption]
+                                                    @{
+                                                        TrueOption++;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    else
+                                    {
+                                        <div class="student-question-content-error">
+                                            <div class="row">
+                                                <div class="col-md-11">
+                                                    <h4><strong>Soru-@item.Question.Id</strong></h4>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <a href="/ExamResult/ResultVideo/@item.Question.Id">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+                                                        </svg>
+                                                    </a>
+
+                                                </div>
+                                                @if (item.Question.ImageUrl != null)
+                                                {
+                                                    <img style="width:70%;height:50%" src="/Template/questions/@item.Question.ImageUrl" />
+                                                }
+                                                <span class="question-info">
+                                                    @item.Question.Text
+                                                </span>
+                                                <span class="question-info">
+                                                    <strong>
+                                                        @item.Question.QuestionText
+                                                    </strong>
+                                                </span>
+
+                                                <div class="question-answer-list">
+                                                    @foreach (var option in item.Question.Options.OrderBy(x => x.Id))
+                                                    {
+                                                        <span><strong>@option.Name)</strong> @option.Text</span>
+                                                        <br />
+                                                    }
+
+                                                </div>
+                                                <div class="student-true-answers ">
+                                                    <strong>Sizin Cevabınız:</strong> @item.Option.Name
+                                                    <strong>Doğru Cevap:</strong> @Model.CorrectAnswers[TrueOption]
+                                                    @{
+                                                        TrueOption++;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+  
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div class="modal-content" id="modal-content1">
+                <span class="close">&times;</span>
+                <h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row d-flex">
+                                <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
+                                <div class="col-sm-10">
+                                    <textarea class="small-text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown">
+                                        <option value="">Matematik</option>
+                                        <option value="">Coğrafya</option>
+                                        <option value="">Tarih</option>
+                                    </select>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Konular</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown">
+                                        <option value="">Üslü Sayılar</option>
+                                        <option value="">Akdeniz</option>
+                                        <option value="">Kurtuluş Savaşı</option>
+                                    </select>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown">
+                                        <option value="">Kolay</option>
+                                        <option value="">Orta</option>
+                                        <option value="">Zor</option>
+                                    </select>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown">
+                                        <option value="">Ders Çıktısı-1</option>
+                                        <option value="">Ders Çıktısı-2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="big-text d-flex ">
+                                <h5>
+                                    <strong>Soru Metini:</strong> </h4><br>
+
+                                    <textarea id="big-text" class="input"></textarea>
+                            </div>
+                            <input type="file" id="fileUpload">
+                        </div>
+                    </div>
+                </form>
+                <button id="upper" class="upper_btn">
+                    <strong>İlerle </strong>
+                </button>
+            </div>
+            <div class="modal-content2" id="modal-content2">
+                <span class="close"></span>
+                <h2><strong> Soru Cevabı Ekleme Alanı</strong></h2>
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row d-flex">
+                                <label for="Ders" class="col-sm-2 col-form-label ">A:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1"><br>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label ">B:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1"><br>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label ">C:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1">
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label ">D:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1">
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label ">E:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <button id="lower_btn" class="lower_btn">
+                    <strong>Geri Dön</strong>
+                </button>
+                <button id="two" class="upper_btn ">
+                    <strong>İlerle </strong>
+                </button>
+
+            </div>
+
+            <div class="modal-content3" id="modal-content3">
+                <span class="close"></span>
+                <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5><strong> Soru Metini:</strong> </h5>
+                        <div class="question-text">
+                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+
+                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+
+
+                        </div>
+                        <button id="lowertwo" class="lower_btn" style="top:15%; height:12%; width: 25%;">
+                            <strong>Geri Dön</strong>
+                        </button>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h5><strong>Çözüm Metini:</strong> </h5>
+                        <textarea class=" big-text" type="text" placeholder="Cevap İçeriğini giriniz"></textarea>
+                        <div class="true-answer-select ">
+                            <label for="">Doğru Şıkkı Seçiniz:</label>
+                            <select name="" id="">
+                                <option value="">A</option>
+                                <option value="">B</option>
+                                <option value="">C</option>
+                                <option value="">D</option>
+                                <option value="">E</option>
+
+                            </select>
+                            <input type="file" id="answerfileUpload">
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-md-4 ">
+                        <h5><strong>Video:</strong> </h5>
+                        <video width="250" height="150" src="../../assets/Canın Ders Çalışmak İstemediğinde İzle.mp4" controls></video>
+
+                    </div>
+
+
+
+                    <button id="cls_btn" style="left: 90%; height:33px; width: 10%;" class="upper_btn">
+                        <strong>Kaydet </strong>
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</main>
+

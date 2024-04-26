@@ -1,0 +1,46 @@
+﻿@model WebUI.Models.ExamModel
+<div class="col-12 text-center">
+    @if (ViewBag.condition==false)
+    {
+        <form asp-controller="CalculateExamScors" asp-action="UpdateScors" method="post">
+            <input type="hidden" value="@Model.Id" name="id" />
+            <input type="hidden" value="true" name="condition" />
+            <button class="btn btn-primary">Yayınla <i class="bi bi-check2-all"></i></button>
+        </form>
+    }
+
+    @if (ViewBag.condition==true)
+    {
+        <form asp-controller="CalculateExamScors" asp-action="UpdateScors" method="post">
+            <input type="hidden" value="@Model.Id" name="id" />
+            <input type="hidden" value="false" name="condition" />
+            <button class="btn btn-danger">Yayından kaldır  <i class="bi bi-x-octagon-fill"></i></button>
+        </form>
+    }
+
+</div>
+<br />
+<br />
+<br />
+<div class="col-lg-5">
+
+    <table class="table ">
+
+        <tr>
+            <th>Sınav Tarihi:</th>
+            <td>@Model.ExamDate</td>
+        </tr>
+        <tr>
+            <th>Ad:</th>
+            <td>@Model.Title</td>
+        </tr>
+        <tr>
+            <th>Açıklama:</th>
+            <td>@Model.Description</td>
+        </tr>
+        <tr>
+            <th>Süre:</th>
+            <td>@Model.Timer dakika</td>
+        </tr>
+    </table>
+</div>

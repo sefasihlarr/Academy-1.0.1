@@ -1,0 +1,41 @@
+﻿@model QuestionModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row" style="margin-bottom:120px;margin-left:2%;margin-top:20px">
+    <form asp-controller="Solution" asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="row" style="margin-bottom:155px;margin-left:2%">
+            <input type="hidden" name="QuestionId" value="@Model.Id" />
+            <input type="hidden" name="Condition" value="True" />
+            <input type="hidden" name="SolutionCondition" value="True" />
+            <div class="col-md-4">
+                <h5><strong> Soru Metini:</strong> </h5>
+                <div class="question-text">
+                    @Model.QuestionText
+                </div>
+                <button id="cls_btn" style="margin-top: 8%; margin-bottom:4%;" class="upper_btn" type="submit">
+                    <strong>Kaydet </strong>
+                </button>
+            </div>
+           
+            <div class="col-md-4">
+                <h5><strong>Çözüm Metini:</strong> </h5>
+                <textarea class=" big-text" type="text" name="Text" placeholder="Cevap İçeriğini giriniz"></textarea>
+                <div class="true-answer-select ">
+                    <label for="">Doğru Şıkkı Seçiniz:</label>
+                    <select class="form-dropdown" name="OptionId" asp-items="ViewBag.options"></select>
+                    <input type="file" name="file" id="answerfileUpload">
+                </div>
+            </div>
+            <div class="col-md-4 ">
+
+                <h5><strong>Video:</strong> </h5>
+                <video width="330" height="185" src="/Template/assets/Canın Ders Çalışmak İstemediğinde İzle.mp4" controls></video>
+            </div>
+         
+        </div>
+    </form>
+
+</div>

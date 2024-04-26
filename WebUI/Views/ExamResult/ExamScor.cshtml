@@ -1,0 +1,151 @@
+﻿@model WebUI.Models.ScorListModel
+@{
+    ViewData["Title"] = "ExamScor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="text-center">
+    <h1><strong class="text-center">Sınav Sonuçlarım</strong></h1>
+</div>
+<br />
+<div class="container">
+    <h4 class="modal-title text-center"><strong> Sınav Sonucu Detayı</strong></h4>
+    @foreach (var item in Model.scors)
+    {
+        <div class="row">
+            <div class=" analyc col-md-5">
+
+                <h4><strong>Sınav Adı:@item.Exam.Title</strong></h4>
+                <h4><strong>Puan: </strong>@item.Scor</h4>
+                <h4><strong>Netiniz: </strong>@item.Average</h4>
+                <h4><strong>Sıralamanız: </strong></h4>
+
+
+            </div>
+            <div class="col-md-7">
+                <canvas height="100px" id="myChart"></canvas>
+            </div>
+            @section Scripts{
+
+            <script src="~/jquery/jquery/jquery.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    GetClass();
+                    $('#Class').change(function () {
+                        var id = $(this).val();
+                        $('#Lesson').empty();
+                        $('#Lesson').append('<option>--Ders seciniz--</option>');
+                        $.ajax({
+                            url: '/Question/Lesson?id=' + id,
+                            success: function (result) {
+                                $.each(result, function (i, data) {
+                                    $('#Lesson').append('<option value=' + data.id + '>' + data.name + '</option>');
+                                });
+                            }
+                        });
+                    });
+                });
+
+                function GetClass() {
+                    $.ajax({
+                        url: '/Question/Class',
+                        success: function (result) {
+                            if (result) {
+                                $.each(result, function (i, data) {
+                                    $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                                });
+
+                            } else {
+
+                                alert('Sınıf bilgisi alınamadı.');
+                            }
+                        },
+                        error: function () {
+                            alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                        }
+                    });
+                }
+            </script>
+
+            <script>
+                const ctx = document.getElementById('myChart');
+
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Doğru Sayısı', 'Yanlış Sayısı', 'Boş Sayısı'],
+                        datasets: [{
+                            label: '',
+                            data: [@item.True, @item.False, @item.Null],
+                            backgroundColor: [
+                                'blue', // doğru
+                                'red', // yanlış
+                                'orange', // boş
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {}
+                });
+            </script>
+        }
+        </div>
+    }
+
+    <div class="row">
+        <div class="title">
+            <h3><strong> Ders Bazlı Başarı Tablosu</strong></h3>
+
+        </div>
+        <table class="col-12 container">
+            @foreach (var item in Model.scors)
+            {
+
+                <tr>
+                    <th>Ders Adı</th>
+                    <th>Doğru Sayısı</th>
+                    <th>Yanlış Sayısı</th>
+                    <th>Boş Sayısı</th>
+                    <th>Başarı Oranı</th>
+                </tr>
+                <tr>
+                    <td>@item.Exam.Lesson.Name</td>
+                    <td>@item.True</td>
+                    <td>@item.False</td>
+                    <td>@item.Null</td>
+                    <td>%@item.Scor</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <br />
+    <hr />
+    <h4 class="modal-title text-center"><strong> Ders Bazlı Sonuç Ekranı</strong></h4>
+    <div class="row">
+        @if (Model.LessonId == 0)
+        {
+            <input type="hidden" value="4" name="LessonId" />
+        }
+        <div class="col-5">
+            <form asp-asp-controller="ExamResult" asp-action="ExamScor" method="post">
+                <input type="hidden" name="UserId" value="@ViewBag.userId" />
+                <span><strong> Sınıf</strong></span>
+                @await Component.InvokeAsync("ClassList")
+                <br />
+                <span><strong> Ders</strong></span>
+                @await Component.InvokeAsync("LessonList")
+                <button class="btn btn-primary" type="submit">Filtrele</button>
+
+            </form>
+        </div>
+
+        @{
+            var lessonId = ViewBag.LessonId;
+        }
+
+        @await Component.InvokeAsync("AllExamResults", new { LessonId = lessonId })
+    </div>
+
+</div>
+<br />
+<br />

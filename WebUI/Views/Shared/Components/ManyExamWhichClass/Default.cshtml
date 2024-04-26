@@ -1,0 +1,57 @@
+﻿@model TotalCountsModel
+
+<script>
+    const ctx = document.getElementById('class-chart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['9.Sınıf', '10.Sınıf', "11.Sınıf", "12.Sınıf"],
+            datasets: [{
+                label: 'Sınav Oranları',
+                data: [@Model.ManyExamWhichClass9, @Model.ManyExamWhichClass10, @Model.ManyExamWhichClass11, @Model.ManyExamWhichClass12],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',],
+                borderWidth: 1
+
+
+
+            }],
+
+        },
+        options: {
+            responsive: false,
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        maxRotation: 90,
+                        minRotation: 80
+                    },
+                    gridLines: {
+                        offsetGridLines: true // à rajouter
+                    }
+                },
+                {
+                    position: "top",
+                    ticks: {
+                        maxRotation: 90,
+                        minRotation: 80
+                    },
+                    gridLines: {
+                        offsetGridLines: true // et matcher pareil ici
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+
+
+    });
+</script>

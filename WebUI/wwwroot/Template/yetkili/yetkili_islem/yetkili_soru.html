@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="&amp";>
+	<meta name="author" content="">
+	<meta name="keywords" content="">
+	<link rel="canonical" href="" />
+
+	<link rel="shortcut icon" href="../../assets/meta_logo_2.png" />
+	<title>Sınıflar</title>
+
+	<link href="../../assets/app.css" rel="stylesheet">
+	<link href="../../assets/css/custom.css" rel="stylesheet">
+	<link href="../../assets/js/custom.js" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+				<div class="sidebar-content js-simplebar"style="background-image: linear-gradient(#A26BBD, #4C8BCD);">
+					<a class="sidebar-brand" href="../yetkili_index.html">
+					<span style="font-size:25px" class="align-middle"><img src="../../assets/meta_logo_2.png"width="75px"height="75px"> LOGO</span>
+				</a>
+
+					<ul class="sidebar-nav">
+						<li class="sidebar-item ">
+							<a class="sidebar-link" href="../yetkili_index.html">
+				<i class="align-middle" data-feather="home"></i> <span class="align-middle">Anasayfa</span>
+				</a>
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="../yetkili_profil_edit.html">
+				<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profil</span>
+				</a>
+						</li>
+
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="../yetkili_mesajlar.html">
+				<i class="align-middle" data-feather="message-square"></i> <span class="align-middle">Mesajlar</span>
+				</a>
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="">
+				<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Ayarlar</span>
+				</a>
+				<li class="sidebar-item active">
+					<a class="sidebar-link" href="#">
+					<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Yetkili işlemleri</span>
+					<i class="align-middle" data-feather="chevron-down"></i>
+					</a>
+					<ul class="sidebar-dropdown list-unstyled">
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="yetkili_siniflar.html">
+						<i class="align-middle" data-feather="users"></i> <span class="align-middle">Sınıflar</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="yetkili_dersler.html">
+						<i class="align-middle" data-feather="book"></i> <span class="align-middle">Dersler</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="yetkili_konular.html">
+						<i class="align-middle" data-feather="server"></i> <span class="align-middle">Konular</span>
+						</a>
+					</li>
+				
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="yetkili_dereceler.html">
+						<i class="align-middle" data-feather="list"></i> <span class="align-middle">Dereceler</span>
+						</a>
+					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="yetkili_sinavlar.html">
+					<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlar</span>
+					</a>
+							</li>
+				
+							<li class="sidebar-item">
+						<a class="sidebar-link" href="yetkili_soru.html">
+					<i class="align-middle" data-feather="plus-circle"></i> <span class="align-middle">Sorular</span>
+					</a>
+							</li>
+					</ul>
+				</li>
+						</li>
+
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="">
+				<i class="align-middle" data-feather="info"></i> <span class="align-middle">S.S.S</span>
+				</a>
+						</li>
+					</ul>
+				</div>
+			
+		</nav>
+
+		<div class="main" style="background-color: #E9F2FF;">
+			<nav class="navbar navbar-expand navbar-light navbar-bg d-block">
+				<div class="navbar-top justify-content-between d-flex align-items-center w-100">
+					<a class="sidebar-toggle js-sidebar-toggle">
+						<i class="hamburger align-self-center"></i>
+					</a>
+					<div class="navbar-mid">
+						<div class="navbar-searchbar-container d-flex align-items-center">
+							<a href="#" class="searchbar-button">
+								<i class="bi-search bold searchbar-icon"></i>
+							</a>
+							<label for="searchbar-input" class="searchbar-input-container">
+								<input type="text" id="searchbar-input" class=" searchbar-input" placeholder="Ne Aramıştınız ?">
+							</label>
+						</div>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="navbar-nav navbar-align">
+							<li class="nav-item dropdown">
+								<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown"
+									data-bs-toggle="dropdown">
+									<div class="position-relative">
+										<i class="align-middle" data-feather="bell"></i>
+										<span class="indicator">1</span>
+									</div>
+								</a>
+								<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+									aria-labelledby="alertsDropdown">
+									<div class="dropdown-menu-header">
+										1 Yeni bildirim
+									</div>
+									<div class="list-group">
+										<a href="#" class="list-group-item">
+											<div class="row g-0 align-items-center">
+												<div class="col-2">
+													<i class="text-warning" data-feather="bell"></i>
+												</div>
+												<div class="col-10">
+													<div class="text-dark">Bildirim başlığı</div>
+													<div class="text-muted small mt-1">Bildirim metni</div>
+													<div class="text-muted small mt-1">1 dakika önce</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="dropdown-menu-footer">
+										<a href="#" class="text-muted">Tüm bildirimleri temizle</a>
+									</div>
+								</div>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-icon dropdown-toggle" href="../yetkili_mesajlar.html" id="messagesButton">
+									<div class="position-relative">
+										<i class="align-middle" data-feather="message-circle"></i>
+										<span class="indicator">1</span>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
+									data-bs-toggle="dropdown"></a>
+
+								<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
+									data-bs-toggle="dropdown">
+									<img src="../../assets/meta_logo_2.png" class="avatar img-fluid rounded me-1"
+										alt="profil resmi" /> <span class="text-dark">Yetkili ismi</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-end">
+									<a class="dropdown-item" href="../yetkili_profil_edit.html"><i
+											class="align-middle me-1" data-feather="user"></i> Profil</a>
+									<a class="dropdown-item" href="../yetkili_index.html"><i class="align-middle me-1"
+											data-feather="settings"></i>Ayarlar</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="../../giris.html">Çıkış</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="navbar-bottom">
+					<div class="personel-container d-flex align-items-center">
+						<div class="personel-photo-container overflow-hidden d-flex align-items-center">
+							<img src="../../assets/images/logo-usr.svg" alt="" class="w-100">
+						</div>
+						<div class="personel-info-container">
+							<div class="personel-status">Admin</div>
+							<div class="personel-name">Özlem Özkaya Ceylan</div>
+						</div>
+					</div>
+				</div>
+
+			</nav>
+			<main class="content">
+				<div class="container-fluid p-0">
+
+					<h1 class="h3 mb-3"><strong>Yetkili</strong> Soru Sayfası</h1>  
+					<div class="row">
+						<div class="d-flex">
+							<div class="w-100">
+								<div class="row">
+									<div class="page-search">
+										<div class="row col-12">
+											<div class="text-center col-10">
+												<h1>Matematik Soruları</h1>
+											</div>
+											<div class="col-2">
+												<button  style="margin-top: 6px;"id="myBtn"class="yetkili_btn">
+													<strong  >Yeni Soru Ekle </strong>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+									
+									<div class="questions-container">
+											
+										<div class="question-content ">
+											<div class="row">
+												<div class="col-md-6">
+													<h4><strong>Soru-1</strong></h3>
+												</div>
+												<div class="col-md-6">
+													<a href="../yetkili_islem_düzenle/yetkili_soru_düzenle.html"  id="question-review-icon">
+														<i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+															<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+															<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+															</svg>
+														</i>
+													</a>
+												</div>
+											</div>
+												
+											<img src="data:image/jpeg;base64,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 "
+												class="question-image">
+											<span class="question-info"><strong>İşleminin sonucu kaçtır?</strong></span>
+											<div class="question-answer-list">
+												<span><strong>A)</strong> 32</span><br>
+												<span><strong>B)</strong> 43</span><br>
+												<span><strong>C)</strong> 23</span><br>
+												<span><strong>D)</strong> 36</span><br>
+												<span><strong>E)</strong> 42</span><br>
+
+											</div>
+										</div>
+										<div  class="question-content">
+											<div class="row">
+												<div class="col-md-6">
+													<h4><strong>Soru-1</strong></h3>
+												</div>
+												<div class="col-md-6">
+													<a href="../yetkili_islem_düzenle/yetkili_soru_düzenle.html"  id="question-review-icon">
+														<i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+															<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+															<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+															</svg>
+														</i>
+													</a>
+												</div>
+											</div>
+											<img src="data:image/jpeg;base64,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 "
+												class="question-image">
+											<span class="question-info"><strong>İşleminin sonucu kaçtır?</strong></span>
+											<div class="question-answer-list">
+												<span><strong>A)</strong> 32</span><br>
+												<span><strong>B)</strong> 43</span><br>
+												<span><strong>C)</strong> 23</span><br>
+												<span><strong>D)</strong> 36</span><br>
+												<span><strong>E)</strong> 42</span><br>
+
+											</div>
+										</div>
+										<div class="question-content">
+											<div class="row">
+												<div class="col-md-6">
+													<h4><strong>Soru-1</strong></h3>
+												</div>
+												<div class="col-md-6">
+													<a href="../yetkili_islem_düzenle/yetkili_soru_düzenle.html"  id="question-review-icon">
+														<i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+															<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+															<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+															</svg>
+														</i>
+													</a>
+												</div>
+											</div>
+											<img src="data:image/jpeg;base64,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 "
+												class="question-image">
+											<span class="question-info"><strong>İşleminin sonucu kaçtır?</strong></span>
+											<div class="question-answer-list">
+												<span><strong>A)</strong> 32</span><br>
+												<span><strong>B)</strong> 43</span><br>
+												<span><strong>C)</strong> 23</span><br>
+												<span><strong>D)</strong> 36</span><br>
+												<span><strong>E)</strong> 42</span><br>
+
+											</div>
+										</div>
+										<!--- resim olunca kullanılacak div -->
+										<div class="question-content">
+											<div class="row">
+												<div class="col-md-6">
+													<h4><strong>Soru-1</strong></h3>
+												</div>
+												<div class="col-md-6">
+													<a href="../yetkili_islem_düzenle/yetkili_soru_düzenle.html"  id="question-review-icon">
+														<i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+															<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+															<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+															</svg>
+														</i>
+													</a>
+												</div>
+											</div>
+											<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ8ODQ0NFREWFhURExUYHSggGholJxUWITEiJTU3Oi86FyE/Oz8sQyotMCsBCgoKDg0OFQ8PGTclHR03NzAvKzU3OC03Nys3NzcrMC43Ljc3NzctKzc3LzcxNzcrKys3NDc3NzcrODc3NzgtNP/AABEIAKgBLAMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAAAQYEBQcIAwL/xABEEAACAgECBAMEBAoGCwAAAAAAAQIDBAURBhIhMQcTQSIyUWEUF3GBFTZCUlNzkZSV0wgloaKy0hYjVGJldJOztNHh/8QAGQEBAAMBAQAAAAAAAAAAAAAAAAMFBgQB/8QAIxEBAAEDAgYDAAAAAAAAAAAAAAECAxEEMRITITJBcVHR8P/aAAwDAQACEQMRAD8A7iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEggkACCQAAAAAAAAABj5+dRjVyuyLq6Koe9ZdONcI/a30AyAUfSvE/Tc7VKdMwfNyHb5zlk8vl0R5K5T2jze1L3duyXXuy8AAAAAAAEEgAAAAIAkEEgAAAAAAAAAAAAAEAAAAABJBIAAAAAAAAAxczTcbIcXfj03uClGLuqhZyxltzJcy6b7Lf7DKAHmTwjrjDiumEUlGNmoxil2UVVakj02eZ/Cn8bofrtS/7Vp6YAAAAAAAAAAAAAAAIJAAhtLq+iEZJ9mn9j3AkAAAAAAAAxtRzasWi3IukoU0Vztsm/yYRW7f9hklM8YqbbOHtSVO/Mq6py27+VC6ErP7qkBpeFuKtW4hhnZOBZj6dRjT8rFrto+kW5FvLzf66TklFbcvurpzd3t1yfC/xJ/DErcPLpjjahRFycYbqq6EWlJxT6xkm+sX9q9dq/8A0bcyDxNRx915kMmu5r15J18qf9xlI4TlKvjXarp/W+oV7L9G5Wxkv2bgemgAAAJAr/FvEFmFCFeJizzs/I5/o2JW1HeMdue2yT6RrjvFN/GUV6nINV8UOKNKy4R1PDx61Laf0d08sJ179fLtjJ9fnu9vU73NQi3Y1FNR2lPZb8i3ezfw6s4D4y8YaZquTgYVV0nj4105ZeZVTzuHNtFxrjJrm22bf3bb7Adz0LVK8/ExsypNV5NMLoxltzRUlvyvb1Xb7jPNXwvDEjgYccCasw449cceafNzVpbJt/Hp1+e5Gp8Sadh2eVl52JjWuKmq78iuqbg20pbSfbo/2AbUFF1HWNGv1DCzv9I6KliRsi8WvUKFj38ya3mubr3/ALF2N9j8Y6PbOFdeqYFllk411whl0ynOcntGMUn1bbS2A3hhalmzojzV4uRlSaltDH8nfddk3ZOKW5mgDz5wNwhr2n65TqeRpNzpVmTK2FV+JKcVbCcem9i32c1+w79j2ucIzcJ1tr3LOVTj9uzaPqAAAAw9K1OjMpjkY1itplKyEZqMo7yhNwktpJPo4tfcZhTvCZf1LR/zOo/+bcXEDWa5rMcKvnePl5M3GUo04eNZfZLl79V7Me/5TW5zXg7xXydY1zHwq8avFw5RyXJSbsyJ8lcnHeXRR7J7Jfezrh5p8I/xsj+s1H/BYB6XAIAkFL1/xA+g5duL+B9YyfKcF5+LieZRZzQUvZlv1232+1M1/wBaf/ANf/cf/oHRCJS2Tb7JNspOjeIn0vJpxvwNrOP50+TzsjE5Ka+nect+iLsBy7g7V69b1LKjn1q6Lr58Oiz2qKa4y2kuTs5tSj7Xfoyvca4stF1XfT7J48bKq8iChJ7Q3lJOD396O8X0fxOraNwlgYF9mTjVOFlices5OMIt7uMF6Lov2HNuIsLI4g1m1Ykd6MflxnkNPyoRg3zSb9erlsl36HBdoqiiInuy1uh1Vm5qq6qOlmKesTt8bbffV1LhfU3nYONlSSjK2veaXZWJuMtvlumbQw9H0+GHjU41e/JTXGCb7y27yfzb3f3mYd1OcRndlr00Tcqm325nHrwAA9RgAAH5sgpJxklKMk1KLW6afdNfA/R8ct2qD8mNcrOnKrZyhDv1baTfx9P2Ac41bw60XSnkavDJ1DT66a5ztqw8zyK5RfXyotLnSk9koqXfbbYpvgHwzbk51utXwkqafNjjylzPzcmzdTlFybbUU5Jt+su+6Z0rU+CLdVshLWc6WRjVz569Ow63i4nN1SdsnKU7H177r5bdd7fiY1VFcKaa4VVVxUK664qMIRXZJLsgMXXNGx9QoePkxnKpyjNqu2ymXNHt7UGmV36stG/RZX8Rzv5hcSQKb9WWjfosr+I538w3fD3DmJpsbI4kbYxtlGU/MyLr22lstnZJ7d/Q2wA/LsjzKPMuZptR3XM0u72OaeN/CGNl6bfqMK4wzcOKs82KUXdSmlOFnx2TbW/Zr5s+3Hvhvk6jqNWq4GovDy6q4QipqTjFwb2lCUXvHu91s9938TaT4Z1TUMaOJrGfjTxm4fSK9Pxp0XZai0+Sy2Umoxey3UIxb+KA1/gPTbDQKXbuo2ZGRZSn6VOW3T5NqT+8v9mPXJ7yrhJ9t5RTe33jFx66a4VVQjXVVCNddcEowhCK2UUvRI+oFc1PUJU6jg4VelTvoyo2u3OhCPk4riuin7Pr82u6236pb1YtSaaqrTXVNQimmfYAY2pYVeVRdj283l31yqnyScJcsls9pLqn8yofVVo/wzf3/J/zF4NfrutYunY1mXl2xporS3k92232jFLq5P4ICr/VVo/wzf3/ACf8x9cXwy0mm2u2CzOeqyFsObOyJR5oyUlunLZrp2KtV49abK5RlhZkKHJLzm6nOK/Odafb7GdVwsurIqrvpnGym6EbK5x92cJLdNAfHWNLpzcezFyFKVNvJzqFk6pPlkpLaUGmusV2K39WWjfosr+I538wuJAHKfDngPTMvS6b768h2SvzYtwzsuuO0Mq2EfZjNLtFfaXzh7hXC02VssSFsXcoxn5mTffuo77beZJ7d32HB2hy03Brw5WK5wtybOeMXBPzb52bbbvtz7fcbsCDzV4S/jav1mpf4LD0VqUctx2xJY8J7S9rIhZZGL/JfLGS39em5y3hjwjztN1GrUqtUx7bq5WSlGzEnyWKyMozT2sW3vP7HsB10k+ePz8kfN5Ofb2uTfk3+W/U+gFJ4gzOK4Zd0dOxNKtwk4eRPJnarpLkjzc21iXvc3p8DXfhDjj/AGDQ/wDqXfzTo4Aoui5vFssqiOdh6TXiOe186J2u6MNn1jvY1v29C9AAYuqRtljZEaNvOdNqp3ey81wfL19Oux+dI06rEx6semChCqCikl3e3WT+LfdsqXitqmdiYtEsSU6oTslHIur9+HRckd/yU931/wB1fEyPC/U8zLwJTzHKfLc4U2zW0rK1Fb9fytnut/8A0Q8yObw46rGdHcjRRqOKOGZ2852/e1xABMrgAAAAAAAEAAAAABJBIAAAAAAAAAwM3ScfIuovvh5ssbndMJ+1VCctt7OR9OdJbKXpvLbuzPIa36AcT/pCYeFOem11RpWqXWuHvV1N4zWy82TaSXM1s5P875nUeCdGlpul4WFOasnRSlOcXvFzk3KXK/zd5NL5I5Z4weF+PVj36tp/mRnVtZl0TsnbGde/tWwlNuSa33a322XTbbrZvAHUb8jRHG6UpLFy7caiUt2/IUK5qO77pOckvgkl6AdJIJAAAAAAAAAAAAAABDSfRpNfMJbdF0RIAAAAAAAAAAACASAIBIAgkAAAAAAAAAAc48RLuKKM/GydHgsjBhUlbjRVUua3mfN5kXtJppx2cX02fb16OAKHn5+qaxp92DHSMjT7cup0ZF+bZT9Gx4TW1jgoy8yx7b7LlXpu0WXhXQKNKwqMHH3ddMXvOXv2WN7ynL5tt/Z29DbgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//Z "
+												class="question-image">
+											<span class="question-info"><strong>İşleminin sonucu kaçtır?</strong></span>
+											<div class="question-answer-list">
+												<span><strong>A)</strong> 32</span><br>
+												<span><strong>B)</strong> 43</span><br>
+												<span><strong>C)</strong> 23</span><br>
+												<span><strong>D)</strong> 36</span><br>
+												<span><strong>E)</strong> 42</span><br>
+
+											</div>
+										</div>
+										<!-- resim olmayınca kullanılacak div -->
+											<div class="question-content">
+												<div class="row">
+													<div class="col-md-6">
+														<h4><strong>Soru-1</strong></h4>
+													</div>
+													<div class="col-md-6">
+														<a href="../yetkili_islem_düzenle/yetkili_soru_düzenle.html"  id="question-review-icon">
+															<i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+																<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+																<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+																</svg>
+															</i>
+														</a>
+													</div>
+													<span class="question-info"><strong>
+														Peynir %8 KDV ile satıldığına göre, indirimli satış fiyatı üzerinden kaç TL KDV alınır?</strong></span>
+													<div class="question-answer-list">
+														<span><strong>A)</strong> 32</span><br>
+														<span><strong>B)</strong> 43</span><br>
+														<span><strong>C)</strong> 23</span><br>
+														<span><strong>D)</strong> 36</span><br>
+														<span><strong>E)</strong> 42</span><br>
+
+													</div>
+												</div>
+											</div>
+
+										<div class="question-content">
+											<div class="row">
+												<div class="col-md-6">
+													<h4><strong>Soru-1</strong></h3>
+												</div>
+												<div class="col-md-6">
+													<a href="../yetkili_islem_düzenle/yetkili_soru_düzenle.html"  id="question-review-icon">
+														<i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+															<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+															<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+															</svg>
+														</i>
+													</a>
+												</div>
+											</div>
+											<img src="https://iasbh.tmgrup.com.tr/6b6fdd/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2018/06/06/iste-zeka-zorlayan-matematik-sorulari-1528317506352.jpg&l=1"
+												class="question-image">
+											<span class="question-info"><strong>İşleminin sonucu kaçtır?</strong></span>
+											<div class="question-answer-list">
+												<span><strong>A)</strong> 32</span><br>
+												<span><strong>B)</strong> 43</span><br>
+												<span><strong>C)</strong> 23</span><br>
+												<span><strong>D)</strong> 36</span><br>
+												<span><strong>E)</strong> 42</span><br>
+
+											</div>
+										</div>
+										
+										<div class="question-content">
+											<div class="row">
+												<div class="col-md-6">
+													<h4><strong>Soru-1</strong></h3>
+												</div>
+												<div class="col-md-6">
+													<a href="../yetkili_islem_düzenle/yetkili_soru_düzenle.html"  id="question-review-icon">
+														<i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+															<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+															<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+															</svg>
+														</i>
+													</a>
+												</div>
+											</div>
+											<img src="data:image/jpeg;base64,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 "
+												class="question-image">
+											<span class="question-info"><strong>İşleminin sonucu kaçtır?</strong></span>
+											<div class="question-answer-list">
+												<span><strong>A)</strong> 32</span><br>
+												<span><strong>B)</strong> 43</span><br>
+												<span><strong>C)</strong> 23</span><br>
+												<span><strong>D)</strong> 36</span><br>
+												<span><strong>E)</strong> 42</span><br>
+
+											</div>
+										</div>
+										
+										<div class="question-content">
+											<div class="row">
+												<div class="col-md-6">
+													<h4><strong>Soru-1</strong></h3>
+												</div>
+												<div class="col-md-6">
+													<a href="../yetkili_islem_düzenle/yetkili_soru_düzenle.html"  id="question-review-icon">
+														<i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+															<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+															<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+															</svg>
+														</i>
+													</a>
+												</div>
+											</div>
+											<img src="data:image/jpeg;base64,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RatPY7hf6TXJkmS4cTMREQFRt28FtVv1gr1XXktqONRruhDpgHpBU/tLfOpQgOwTyeMPEeRy39lALSuaNNw0U/hNmdm/P21V2shzpDpiJtwi0cyve2MG2tRex2US0w52jTBh3SNVScf8RqulDBunnVdof7G6/wCQUDi/4ntE5ariKZ/8tgyM8xq7/cSvWtdM6IKTjqojF7UhxZTAeRbMDLZ6EfMOost3ZmxsdV7wJ/xH5K8br7gspw6oJKveHwjGCGtAUupc1XmZjthbgxoXFam6mOcYJdHSB9yltjfDZxINRdZyDkvS1OcXZcZWQACqVfcigWBuXRTuydlsoMDWjRSCLFerG6mDqAvjaDRo0LKiIoatu/SfV7QiSpWnTDRAELIiIiIiIiIiIi0sVs5lQy4LdREUDtHdynVItYLadsSkafZ5RClERFzXeTY30Yy0TTJsdQ0ZeI8fvUEuu4/BtqsLXCQVz/bnw9kEU3GCflkx6aLS2g1pJbxW2zNO2L3NZlxknj27TnoVW3YymHZS9uaJiV7+HOH7bEue4AySTy1U1sn4aDV6t27u7DMKSWraBCzr3BqxIiFK1NlUXCCwKtbZ3KY6XUiWO6K5ovVoBIMhcgxeBqUTlqCDwOk9R1Vhwe3HOYJYC7QmbGOMR+KtO3tktxFOCO8LtPEFc02vUxOGbkbQBI0cZykTc5RefNYG1t6x/viQNNR+UFbri6qOpNDPxTr0/cwpio8uJcdTfQD7lhrYhrIzuDZ0kgTAJOvQE+SrdKrtKqZaA0HQBgt0kgr0N0sZiKgNYuPKdACZMBWH8wxjQ2mMDAGmFV/yz3GXlReIfV2hiA1oPZtMNAMj+49T7BdP3d3JpU6ffbJKz7q7osw1yJKtyhucXGSpjWhogLne39wA4E0iRPAFQuD3Tfhe8WZ3mSATGnXnMevDVdeUbtujmpGGkkEERr19psjYnKxeCGnd1VGOLqkZHUDSa4EZzUYQ2WkkmOV/bmojcbd+lUDhVYHPZLbOPgQHNNwYHoFp79YoVn08O1pOV2YutBsRAHnr0V53F3c7BgdOvBZ1DJWq3YQ2eaiRuJTNQkMgEybk9OJ6K1bI3VoURZolWCF9WtSFjp0w0QAsGJ2fTqfM0FbaIijf4JQn5AtujhWN0aAs6IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiLBXwjH/M0FZ0RFr0sIxujQswYOS9IiIiIiIvhC+oiKt4jdWm6v2p1VhpUw0QF7RERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERFo7U2gygzPUnLMW8CfuBtqdBJICiqu9+HAeQHuyML+7lMgOLBBmLuygX+2JiDBFY0VfO9eGBglw+sFISBd5jSDcXabcD0MesPvRh3gkE2ZnvFxmLYBmDBFzMAakXginkVfq71Yds/OYDyYAIDWQHGZ5nTU2IEEE2BEREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREWKqwEtkAwZHQ5SJHqfVZUREXkrxRaA1oAgRoiIiyoiIiIiIi//2Q=="
+												class="question-image">
+											<span class="question-info"><strong>İşleminin sonucu kaçtır?</strong></span>
+											<div class="question-answer-list">
+												<span><strong>A)</strong> 32</span><br>
+												<span><strong>B)</strong> 43</span><br>
+												<span><strong>C)</strong> 23</span><br>
+												<span><strong>D)</strong> 36</span><br>
+												<span><strong>E)</strong> 42</span><br>
+
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="popup">
+					<div id="myModal" class="modal">
+						<div class="modal-content" id="modal-content1">
+							<span class="close">&times;</span>
+							<h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
+							<form>
+								<div class="row">
+									<div class="col-6 d-flex">
+										<div class="form-group row ">
+												<div class="row">
+													<label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
+													<div class="col-sm-10">
+														<textarea class="small-text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
+													</div>	
+												</div>
+											<div class="row">
+												<label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+												<div class="col-sm-10">
+													<select  class="form-dropdown">
+														<option  value="">Matematik</option>
+														<option  value="">Coğrafya</option>
+														<option  value="">Tarih</option>
+													</select>
+												</div>
+											</div>
+											<div class="row">
+												<label for="Ders" class="col-sm-2 col-form-label">Konular</label>
+												<div class="col-sm-10">
+													<select  class="form-dropdown">
+														<option  value="">Üslü Sayılar</option>
+														<option  value="">Akdeniz</option>
+														<option  value="">Kurtuluş Savaşı</option>
+													</select>						
+												</div>
+											</div>
+													
+											<div class="row">
+												<label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
+												<div class="col-sm-10">
+													<select  class="form-dropdown">
+														<option  value="">Kolay</option>
+														<option  value="">Orta</option>
+														<option  value="">Zor</option>
+													</select>
+												</div>		
+											</div>
+											<div class="row">
+												<label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
+												<div class="col-sm-10">
+													<select  class="form-dropdown">
+														<option  value="">Ders Çıktısı-1</option>
+														<option  value="">Ders Çıktısı-2</option>
+													</select>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<div class="col-6">										
+									<div class="big-text d-flex ">
+										<h5><strong>Soru Metini:</strong> </h4><br>
+
+										<textarea id="big-text"class="input" ></textarea>
+									</div>
+									<input type="file" id="answerfileUpload">
+									</div>
+								</div>
+							</form>
+								<button id="upper" class="upper_btn">
+									<strong >İlerle </strong>
+								</button>
+						</div>
+						 <div class="modal-content2" id="modal-content2">
+							<span class="close"></span>
+							<h2><strong> Soru Cevabı Ekleme Alanı</strong></h2>
+							<div class="col-12">
+								<form>
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">A:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class="text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
+									</div>
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">B:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class=" text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
+									</div>
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">C:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class=" text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
+									</div>
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">D:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class="text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
+									</div>
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">E:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class=" text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
+									</div>
+								</form>		
+							</div>
+											
+								<button id="lower_btn" class="lower_btn">
+										<strong >Geri Dön</strong>
+									</button>
+									<button id="two" class="upper_btn ">
+										<strong >İlerle </strong>
+									</button>
+
+						</div>
+					
+						<div class="modal-content3" id="modal-content3">
+							<span class="close"></span>
+                            <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
+							<div class="row">
+								<div class="col-md-4">
+									<h5><strong> Soru Metini:</strong> </h5>
+									<div class="question-text">
+										Tukididis, Klasik Yunan döneminde milattan önce beşinci
+											yüzyılda yaşamış bir tarihçi ve aynı
+										zamanda bir askerdir. Atina’da doğmuştur. 
+										Tukididis, Atina ve Sparta arasındaki Peloponnes
+										Savaşı boyunca (M.Ö. 431 – 404) 
+										yüzyılda yaşamış bir tarihçi ve aynı
+										zamanda bir askerdir. Atina’da doğmuştur. 
+										Tukididis, Atina ve Sparta arasındaki Peloponnes
+										Savaşı boyunca (M.Ö. 431 – 404)
+										Tukididis, Klasik Yunan döneminde milattan önce beşinci
+											yüzyılda yaşamış bir tarihçi ve aynı
+										zamanda bir askerdir. Atina’da doğmuştur. 
+										Tukididis, Atina ve Sparta arasındaki Peloponnes
+										Savaşı boyunca (M.Ö. 431 – 404) 
+										yüzyılda yaşamış bir tarihçi ve aynı
+										zamanda bir askerdir. Atina’da doğmuştur. 
+										Tukididis, Atina ve Sparta arasındaki Peloponnes
+										Savaşı boyunca (M.Ö. 431 – 404) 
+										
+										Tukididis, Klasik Yunan döneminde milattan önce beşinci
+											yüzyılda yaşamış bir tarihçi ve aynı
+										zamanda bir askerdir. Atina’da doğmuştur. 
+										Tukididis, Atina ve Sparta arasındaki Peloponnes
+										Savaşı boyunca (M.Ö. 431 – 404) 
+										yüzyılda yaşamış bir tarihçi ve aynı
+										zamanda bir askerdir. Atina’da doğmuştur. 
+										Tukididis, Atina ve Sparta arasındaki Peloponnes
+										Savaşı boyunca (M.Ö. 431 – 404) 
+										
+										
+									</div>
+									<button id="lowertwo" class="lower_btn" style="top:15%; height:12%; width: 25%;">
+										<strong >Geri Dön</strong>
+									</button>
+
+								</div>
+								<div class="col-md-4">
+										<h5><strong>Çözüm Metini:</strong> </h5>
+										<textarea class=" big-text"type="text" placeholder="Cevap İçeriğini giriniz"></textarea>
+										<div class="true-answer-select ">
+											<label for="">Doğru Şıkkı Seçiniz:</label>
+											<select name="" id="">
+												<option value="">A</option>
+												<option value="">B</option>
+												<option value="">C</option>
+												<option value="">D</option>
+												<option value="">E</option>
+	
+											</select>
+											<input type="file" id="answerfileUpload">	
+										</div>
+
+
+	
+								</div>
+								<div class="col-md-4 ">
+									<h5><strong>Video:</strong> </h5>
+									<video  width="250" height="150" src="../../assets/Canın Ders Çalışmak İstemediğinde İzle.mp4" controls></video>  
+
+								</div>
+
+								 
+
+								<button id="cls_btn" style="left: 90%; height:33px; width: 10%;" class="upper_btn">
+									<strong >Kaydet </strong>
+								</button>
+							</div>						 
+                        </div>
+
+
+						<!-- </div>
+						<div class="modal-content3" id="modal-content3">
+							<span class="close">&times;</span>
+							<h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
+							
+								<thead>
+
+								</thead>
+								<tbody>
+									<div class="modal-form-container">
+										<div class="question-text">
+											Tukididis, Klasik Yunan döneminde milattan önce beşinci
+												yüzyılda yaşamış bir tarihçi ve aynı
+											   zamanda bir askerdir. Atina’da doğmuştur. 
+											   Tukididis, Atina ve Sparta arasındaki Peloponnes
+											   Savaşı boyunca (M.Ö. 431 – 404) 
+											   Trakya’daki Amfipolis şehrini korumakla görevlendirilen
+											   donanmanın komutanıydı. 
+											   Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
+											   general Brasidas’ın eline 
+											   geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
+											   zorunda kaldı. Bu sürgün,
+												Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
+											   Peloponnes Savaşı’nın 
+											   Tarihi adlı çalışması için araştırma yapma imkânı verdi.
+											   											   Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
+											   general Brasidas’ın eline 
+											   geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
+											   zorunda kaldı. Bu sürgün,
+												Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
+											   Peloponnes Savaşı’nın 
+											   Tarihi adlı çalışması için araştırma yapma imkânı verdi.
+										</div>
+										<div class="big-text d-flex">
+											<h5><strong>Çözüm Metini:</strong> </h4><br>
+											<input class="big-text"type="text" placeholder="Soru İçeriğini giriniz">
+										</div>
+									
+										
+									</div>
+									<td>
+										<button id="" class="upper_btn" >
+											<strong >İlerle </strong>
+										</button><br>
+									</td>
+
+
+								</tbody>
+
+							
+
+						</div> --> 
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+
+	<script src="../../assets/app.js">
+
+	</script>
+
+</body>
+
+</html>

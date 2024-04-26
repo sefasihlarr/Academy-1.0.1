@@ -1,0 +1,174 @@
+﻿<nav id="sidebar" class="sidebar js-sidebar">
+    <div class="sidebar-content js-simplebar linear-background pt-4">
+        <a class="sidebar-brand d-flex align-items-center" href="yetkili_index.html">
+            <img src="/Template/assets/images/example-logo.svg" class="logo-sm mr-15">
+            <span class="align-middle logo-title-sm"> LOGO</span>
+        </a>
+
+        <ul class="sidebar-nav mt-5">
+            <li class="sidebar-item active">
+                <a class="sidebar-link" href="https://localhost:44382">
+                    <i class="align-middle" data-feather="home"></i> <span class="align-middle">Anasayfa</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" asp-controller="Account" asp-action="UserDetail">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profil</span>
+                </a>
+            </li>
+            @if (User.IsInRole("Öğrenci"))
+            {
+                <li class="sidebar-item">
+                    <a class="sidebar-link" asp-controller="MyExam" asp-action="Index">
+                        <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlarım</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" asp-controller="ExamResult" asp-action="Index">
+                        <i class="align-middle" data-feather="eye"></i> <span class="align-middle">Sonuçlarım</span>
+                    </a>
+                </li>
+
+            }
+
+            @if (User.IsInRole("Öğretmen"))
+            {
+                <li class="sidebar-item">
+                    <a class="sidebar-link" asp-controller="MyExam" asp-action="TeacherExams">
+                        <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlar</span>
+                    </a>
+                </li>
+            }
+
+
+            @if (User.IsInRole("Müdür"))
+            {
+                <li class="sidebar-item">
+                    <a class="sidebar-link" asp-controller="Exam" asp-action="AllExamList">
+                        <i class="align-middle" data-feather="eye"></i> <span class="align-middle">Tüm Sınavlar</span>
+                    </a>
+                </li>
+
+            }
+            @if (User.IsInRole("Öğretmen") || User.IsInRole("Müdür") || User.IsInRole("Müdür Yardımcısı") || User.IsInRole("Çalışan"))
+            {
+                <li class="sidebar-item ">
+                    <a class="sidebar-link dropdown-btn" href="#">
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">
+                            Yetkili
+                            işlemleri
+                        </span>
+                        <i class="align-middle" data-feather="chevron-down"></i>
+                    </a>
+
+                    <ul class="sidebar-dropdown  list-unstyled">
+                        <li id="sinif" class="sidebar-item">
+                        </li>
+
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Class" asp-action="Index">
+                                <i class="align-middle" data-feather="users"></i> <span class="align-middle">Sınıflar</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Branch" asp-action="Index">
+                                <i class="align-middle" data-feather="users"></i> <span class="align-middle">Şubeler</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Lesson" asp-action="Index">
+                                <i class="align-middle" data-feather="book"></i> <span class="align-middle">Dersler</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Subject" asp-action="Index">
+                                <i class="align-middle" data-feather="server"></i> <span class="align-middle">Konular</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Level" asp-action="Index">
+                                <i class="align-middle" data-feather="list"></i> <span class="align-middle">Dereceler</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Output" asp-action="Index">
+                                <i class="align-middle" data-feather="list"></i> <span class="align-middle">Kazanımlar</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Question" asp-action="Index">
+                                <i class="align-middle" data-feather="plus-circle"></i> <span class="align-middle">Sorular</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Solution" asp-action="Questions">
+                                <i class="align-middle" data-feather="underline"></i> <span class="align-middle">
+                                    Soru Çözümleri
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Exam" asp-action="Index">
+                                <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlar</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            }
+
+
+            @if (User.IsInRole("Öğretmen") || User.IsInRole("Müdür") || User.IsInRole("Müdür Yardımcısı"))
+            {
+                <li class="sidebar-item sidebar-item">
+                    <a class="sidebar-link dropdown-btn" href="#">
+                        <i class="align-middle" data-feather="settings"></i> <span class="align-middle">
+                            Kullanıcı Ayarları
+                        </span>
+                        <i class="align-middle" data-feather="chevron-down"></i>
+                    </a>
+                    <ul class="sidebar-dropdown  list-unstyled">
+
+
+                        <li class="sidebar-item sidebar-dropdown-item">
+                            <a class="sidebar-link" asp-controller="Account" asp-action="Index">
+                                <i class="align-middle" data-feather="users"></i> <span class="align-middle">Öğrenciler</span>
+                            </a>
+                        </li>
+
+                        @if (User.IsInRole("Müdür Yardımcısı") || User.IsInRole("Müdür"))
+                        {
+                            <li class="sidebar-item sidebar-dropdown-item">
+                                <a class="sidebar-link" asp-controller="Authority" asp-action="Index">
+                                    <i class="align-middle" data-feather="award"></i> <span class="align-middle">Görevliler</span>
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Super User"))
+                        {
+                            <li class="sidebar-item sidebar-dropdown-item">
+                                <a class="sidebar-link" asp-controller="Role" asp-action="Index">
+                                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Roller</span>
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </li>
+            }
+
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="">
+                    <i class="align-middle" data-feather="info"></i> <span class="align-middle">S.S.S</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

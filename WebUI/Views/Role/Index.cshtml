@@ -1,0 +1,114 @@
+﻿@model AppRoleListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="content d-flex flex-wrap justify-content-between">
+	<div class="container-fluid p-0">
+
+		<h1 class="h3 mb-3"><strong>Yetkili</strong> Görevler Sayfası</h1>
+
+		<div class="row">
+			<div class="d-flex">
+				<div class="w-100">
+					<div class="row">
+
+						<div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+							<div class="row">
+								<div class="card-header col-10">
+									<h5 class="card-title mb-0">Görevler</h5>
+								</div>
+								<div class="yetkili_btn col-2">
+
+									<a style="color:white" id="myBtn">
+										<strong>Yeni Görev Ekle </strong>
+
+									</a>
+								</div>
+							</div>
+
+							<table class="table my-0 text-center">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>İsmi</th>
+
+										<th>Ekleyen ve tarihi</th>
+										<th>Değiştiren ve tarihi</th>
+										<th>Aktiflik durumu</th>
+										<th>Düzenle veya sil</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var item in Model.Roles)
+									{
+										<tr>
+											<td>@item.Id</td>
+											<td>@item.Name</td>
+											<td>İsim-@item.CreatedDate</td>
+											<td>İsim-@item.UpdatedDate</td>
+											@if (item.Condition == true)
+											{
+												<td><span class="badge bg-success">Aktif</span></td>
+											}
+											else
+											{
+												<td><span class="badge bg-danger">Pasif</span></td>
+											}
+											<td>
+												<a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+												<a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
+											</td>
+										</tr>
+									}
+								
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="popup">
+		<div id="myModal" class="modal">
+			<div style="height:max-content" class="modal-content" id="small-modal">
+				<span class="close">&times;</span>
+				<h2 class="modal-title text-center"><strong>Ekle</strong></h2>
+				<form asp-controller="Role" asp-action="Create" method="post">
+					<div class="row">
+						<div class="col-12">
+							<div class="form-group row d-flex">
+								<label for="name" class="col-sm-3 col-form-label">İsmi</label>
+								<div class="col-sm-9">
+									<input class="answer-place text-center" name="Name" type="text" placeholder="Örneğin:Sekreter">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="form-group row d-flex">
+								<label for="Ders" class="col-sm-3 col-form-label">Durum</label>
+								<div class="col-sm-9">
+									<select class="form-dropdown" name="Condition">
+										<option value="True">Aktif</option>
+										<option value="False">Pasif</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button id="cls_btn" class="upper_btn" type="submit">
+						<strong>Kaydet </strong>
+					</button>
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+</main>
+

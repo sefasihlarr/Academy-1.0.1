@@ -1,0 +1,55 @@
+﻿@model QuestionModel
+
+<div class="modal-content2" id="modal-content2">
+    <span class="close"></span>
+    <h2><strong> Soru Cevabı Ekleme Alanı</strong></h2>
+    <div class="row">
+
+        <div class="form-group row d-flex">
+            <label for="Ders" class="col-md-2 col-form-label ">A:</label>
+            <div class="col-md-10">
+                <input class="form-dropdown text-center" value="A" asp-for="@Model.Options[0].Name" type="hidden">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center"  asp-for="@Model.Options[0].Text" type="text">
+                <input  class="form-dropdown text-center" value="True" asp-for="@Model.Options[0].Condition" type="hidden">
+                <input  class="form-dropdown text-center" value="@Model.Id" asp-for="@Model.Options[0].QuestionId" type="hidden">
+            </div>
+            <label for="Ders" class="col-md-2 col-form-label ">B:</label>
+            <div class="col-md-10">
+                <input class="form-dropdown text-center" value="B" asp-for="@Model.Options[1].Name" type="hidden">
+                <input placeholder="B Şıkkını Giriniz..." class="form-dropdown text-center" asp-for="@Model.Options[1].Text" type="text">
+                <input  class="form-dropdown text-center" value="True" asp-for="@Model.Options[1].Condition" type="hidden">
+                <input  class="form-dropdown text-center" value="@Model.Id" asp-for="@Model.Options[1].QuestionId" type="hidden">
+            </div>
+            <label for="Ders" class="col-md-2 col-form-label ">C:</label>
+            <div class="col-md-10">
+                <input  class="form-dropdown text-center" value="C" asp-for="@Model.Options[2].Name" type="hidden">
+                <input placeholder="C Şıkkını Giriniz..." class="form-dropdown text-center" asp-for="@Model.Options[2].Text" type="text">
+                <input  class="form-dropdown text-center" value="True" asp-for="@Model.Options[2].Condition" type="hidden">
+                <input class="form-dropdown text-center" value="@Model.Id" asp-for="@Model.Options[2].QuestionId" type="hidden">
+                <br>
+            </div>
+            <label for="Ders" class="col-md-2 col-form-label ">D:</label>
+            <div class="col-md-10">
+                <input class="form-dropdown text-center" value="D" asp-for="@Model.Options[3].Name" type="hidden">
+                <input placeholder="D Şıkkını Giriniz..." class="form-dropdown text-center" asp-for="@Model.Options[3].Text" type="text">
+                <input class="form-dropdown text-center" value="True" asp-for="@Model.Options[3].Condition" type="hidden">
+                <input class="form-dropdown text-center" value="@Model.Id" asp-for="@Model.Options[3].QuestionId" type="hidden">
+                <br>
+            </div>
+            <label for="Ders" class="col-md-2 col-form-label ">E:</label>
+            <div class="col-md-10">
+                <input  class="form-dropdown text-center" value="E" asp-for="@Model.Options[4].Name" type="hidden">
+                <input placeholder="E Şıkkını Giriniz..." class="form-dropdown text-center" asp-for="@Model.Options[4].Text" type="text">
+                <input  class="form-dropdown text-center" value="True" asp-for="@Model.Options[4].Condition" type="hidden">
+                <input  class="form-dropdown text-center" value="@Model.Id" asp-for="@Model.Options[4].QuestionId" type="hidden">
+                <br>
+            </div>
+        </div>
+    </div>
+    <a id="lower_btn" class="lower_btn" style=" height:33px; width: 30%;">
+        <strong style="color:wheat">Geri Dön</strong>
+    </a>
+    <button id="cls_btn" style="left: 17%; height:33px; width: 30%;" class="upper_btn" type="submit">
+        <strong style="color:white">Kaydet </strong>
+    </button>
+</div>

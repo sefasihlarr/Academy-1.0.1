@@ -1,0 +1,168 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<main class="content d-flex justify-content-between flex-wrap">
+    <h1><strong>Sınav Sonuçlarım</strong></h1>
+    <div class="student-exam-result-container d-flex  flex-wrap">
+        <div class="student-exam-result-content">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="student-exam-result-content-title ">
+                        <h4><strong>Matematik Sınavı-1</strong></h4>
+                    </div>
+                    <div class="student-exam-result-content-info ">
+                        <strong>Konu:</strong>Üslü Sayılar
+                    </div>
+                    <div class="student-exam-result-content-score ">
+                        <strong>Puan:</strong>95
+                    </div>
+                    <div class="student-exam-result-content-question-link-container">
+                        <a class="student-exam-result-content-question-link" asp-controller="Result" asp-action="ResultQuestions">
+                            <strong>Sorular</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a id="myBtn" class="custom-card-icon-container">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="student-exam-result-content">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="student-exam-result-content-title ">
+                        <h4><strong>Matematik Sınavı-1</strong></h4>
+                    </div>
+                    <div class="student-exam-result-content-info ">
+                        <strong>Konu:</strong>Üslü Sayılar
+                    </div>
+                    <div class="student-exam-result-content-score ">
+                        <strong>Puan:</strong>95
+                    </div>
+                    <div class="student-exam-result-content-question-link-container">
+                        <a class="student-exam-result-content-question-link" asp-controller="Result" asp-action="ResultQuestions">
+                            <strong>Sorular</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="custom-card-icon-container">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="student-exam-result-content">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="student-exam-result-content-title ">
+                        <h4><strong>Matematik Sınavı-1</strong></h4>
+                    </div>
+                    <div class="student-exam-result-content-info ">
+                        <strong>Konu:</strong>Üslü Sayılar
+                    </div>
+                    <div class="student-exam-result-content-score ">
+                        <strong>Puan:</strong>95
+                    </div>
+                    <div class="student-exam-result-content-question-link-container">
+                        <a class="student-exam-result-content-question-link" asp-action=>
+                            <strong>Sorular</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="custom-card-icon-container">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="student-exam-result-content">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="student-exam-result-content-title ">
+                        <h4><strong>Matematik Sınavı-1</strong></h4>
+                    </div>
+                    <div class="student-exam-result-content-info ">
+                        <strong>Konu:</strong>Üslü Sayılar
+                    </div>
+                    <div class="student-exam-result-content-score ">
+                        <strong>Puan:</strong>95
+                    </div>
+                    <div class="student-exam-result-content-question-link-container">
+                        <a class="student-exam-result-content-question-link" asp-action=>
+                            <strong>Sorular</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a id="myBtn" href="#" class="custom-card-icon-container">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="student-exam-result-content">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="student-exam-result-content-title ">
+                        <h4><strong>Matematik Sınavı-1</strong></h4>
+                    </div>
+                    <div class="student-exam-result-content-info ">
+                        <strong>Konu:</strong>Üslü Sayılar
+                    </div>
+                    <div class="student-exam-result-content-score ">
+                        <strong>Puan:</strong>95
+                    </div>
+                    <div class="student-exam-result-content-question-link-container">
+                        <a class="student-exam-result-content-question-link" asp-action=>
+                            <strong>Sorular</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="custom-card-icon-container">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div class="modal-content" id="medium-modal">
+                <span class="close">&times;</span>
+                <h4 class="modal-title text-center"><strong> Sınav Sonucu Detayı</strong></h4>
+                <div class="row">
+                    <div class=" analyc col-md-5">
+
+                        <h4><strong>Sınav Adı:</strong>Matematik-1</h4>
+                        <h4><strong>Puan:</strong>70</h4>
+                        <h4><strong>Sınıf Sıralamanız:</strong>4</h4>
+                        <h4><strong>Genel Sıralamanız:</strong>16</h4>
+
+
+                    </div>
+                    <div class="col-md-7">
+                        <canvas height="100px" id="myChart"></canvas>
+                    </div>
+                </div>
+                <td>
+                    <button id="cls_btn" class="rapor_button">
+                        <strong>Kaydet </strong>
+                    </button><br>
+                </td>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+
+

@@ -1,0 +1,150 @@
+﻿@model QuestionModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetClass();
+            $('#Class').change(function () {
+                var id = $(this).val();
+                $('#Lesson').empty();
+                $('#Lesson').append('<option>--Ders seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Lesson?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Lesson').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $('#Lesson').change(function () {
+                var id = $(this).val();
+                $('#Subject').empty();
+                $('#Subject').append('<option>--Konu seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Subject?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Subject').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $('#Subject').change(function () {
+                var id = $(this).val();
+                $('#Output').empty();
+                $('#Output').append('<option>--Kazanım seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Output?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Output').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
+}
+<main class="content">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3"><strong>Soru</strong> Düzenleme Sayfası</h1>
+        <div class="row">
+            <form asp-controller="Question" asp-action="Update" method="post" enctype="multipart/form-data">
+                <div class="edit-table text-center">
+                    <div class="form-group row d-flex">
+                        <label for="name" class="col-sm-4 col-form-label">Resim</label>
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <div class="col-sm-8">
+                            <input type="hidden" name="ImageUrl" value="@Model.ImageUrl" />
+                            <img src="/Template/questions/@Model.ImageUrl" value="@Model.ImageUrl" style="width:50%;height:auto" />
+                            <br />
+                            <input type="file" name="file" id="answerfileUpload" style="margin:30px 0px 30px 0px">
+                        </div>
+                        <label for="name" class="col-sm-4 col-form-label">Soru</label>
+                        <div class="col-sm-8">
+                            <textarea type="input" asp-for="@Model.Text" class="small-text">@Model.Text</textarea>
+                        </div>
+                        <label for="name" class="col-sm-4 col-form-label">Soru Metini</label>
+                        <div class="col-sm-6" style="margin-left:42%">
+                            <textarea type="input" asp-for="@Model.QuestionText" class="big-text">@Model.QuestionText</textarea>
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Sınıf</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("ClassList")
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Ders</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("LessonList")
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Konu</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("SubjectList")
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Kazanım</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("OutputList")
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Seviye</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("LevelList")
+                        </div>
+       
+                        <label for="Ders" class="col-sm-4 col-form-label">Durum</label>
+                        <div class="col-sm-8">
+                            <select class="form-dropdown">
+                                <option value="True">Aktif</option>
+                                <option value="False">Pasif</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div>
+                        <button id="edit-design-btn" class="upper_btn" type="submit">
+                            <strong>Kaydet </strong><br>
+                        </button>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div class="modal-content" id="medium-modal">
+                <span class="close">&times;</span>
+                <img src="data:image/jpeg;base64,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"
+                     class="edit-question-image ">
+            </div>
+
+        </div>
+    </div>
+</main>
+

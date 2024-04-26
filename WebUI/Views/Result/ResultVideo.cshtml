@@ -1,0 +1,18 @@
+﻿@model SolutionModel
+@{
+    ViewData["Title"] = "ResultVideo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+        <h2><strong>Soru Çözüm Sayfası</strong></h2>
+        <div class="row">
+            <div class="student-question-solution-page">
+                <h3>3.Soru Çözüm Videosu</h3>
+                <video style="border-radius:15px;margin-left: 7%;" width=87% src="/Template/video/@Model.VideoUrl" controls></video>
+            </div>
+        </div>
+    </div>
+</main>
+

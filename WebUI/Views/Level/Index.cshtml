@@ -1,0 +1,133 @@
+﻿@model LevelListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Seviye Belirleme Sayfası</h1>
+
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+
+                        <div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+                            <div class="row">
+                                <div class="card-header col-10">
+                                    <h5 class="card-title mb-0">Seviyeler</h5>
+                                </div>
+                                <div class="yetkili_btn col-2">
+
+                                    <a style="color:white" id="myBtn">
+                                        <strong>Yeni Seviye Ekle </strong>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <table class="table my-0 text-center">
+                                <thead>
+
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>İsmi</th>
+                                        @if (User.IsInRole("Müdür"))
+                                        {
+
+                                            <th>Ekleyen ve tarihi</th>
+                                            <th>Değiştiren ve tarihi</th>
+                                        }
+
+                                        <th>Aktiflik durumu</th>
+                                        <th>Düzenle veya sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Levels)
+                                    {
+                                        <tr>
+                                            <td class="d-none d-md-table-cell">@item.Id</td>
+                                            <td>@item.Name</td>
+                                            @if (User.IsInRole("Müdür"))
+                                            {
+
+                                                <td class="d-none d-md-table-cell">@item.CreatedDate</td>
+                                                <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
+                                            }
+                                          
+                                            @if (item.Condition == true)
+                                            {
+                                                <td><span class="badge bg-success">Aktif</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge bg-danger">Pasif</span></td>
+                                            }
+
+                                            <td>
+                                                <a href="/Level/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+                                                <form asp-controller="Level" asp-action="Delete" method="post" style="display:inline">
+                                                    <input type="hidden" name="Id" value="@item.Id" />
+                                                    <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div id="small-modal" class="modal-content">
+                <div class="row d-flex">
+                    <div class="col-10">
+                        <h3 class="modal-title col-10"><strong> Seviye Ekle</strong></h3>
+                    </div>
+                    <div class="col-2">
+                        <span class="close">&times;</span>
+                    </div>
+
+
+                </div>
+                <form asp-controller="Level" asp-action="Create" method="post">
+
+                    <div class="row text-center mt-5 ">
+                        <div class="col-12 text-center ">
+                            <div class="form-group row d-flex">
+                                <label for="Ders" class="col-sm-2 col-form-label">Seviye Adı</label>
+
+                                <div class="col-sm-10">
+                                    <input placeholder="Örneğin:Kolay" class="form-dropdown" name="Name" />
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Durum</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown" name="Condition">
+                                        <option value="True">Aktif</option>
+                                        <option value="False">Pasif</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <td>
+                        <button id="cls_btn" class="rapor_button" type="submit">
+                            <strong>Kaydet </strong>
+                        </button><br>
+                    </td>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+

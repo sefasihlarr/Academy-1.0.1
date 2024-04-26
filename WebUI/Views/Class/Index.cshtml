@@ -1,0 +1,107 @@
+﻿@model ClassListModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+
+        <script src="~/jquery/jquery/jquery.min.js"></script>
+
+        <script src="~/jquery/jquery-validate/jquery.validate.min.js"></script>
+        <script src="~/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Sınıflar Sayfası</h1>
+
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+
+                        <div class="card flex-fill col-12 " style="border-radius: 25px;box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+																				
+                            <div class="row">
+                                <div class="card-header col-10">
+                                    <h5 class="card-title mb-0">Sınıflar</h5>
+                                </div>
+                                <div class="yetkili_btn col-2">
+
+                                    <a style="color:white" id="myBtn">
+                                        <strong>Yeni Sınıf Ekle </strong>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <table class="table my-0 text-center">
+                                <thead>
+
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Sınıf</th>
+                                  
+                                        @if (User.IsInRole("Müdür"))
+                                        {
+                                            <th>Ekleyen ve tarihi</th>
+                                            <th>Değiştiren ve tarihi</th>
+                                        }
+                                  
+                                        <th>Aktiflik durumu</th>
+                                        <th>Düzenle veya sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Classes)
+                                    {
+                                        <tr>
+                                            <td class="d-none d-md-table-cell">@item.Id</td>
+                                            <td>@item.Name</td>
+                                    
+
+                                            @if (User.IsInRole("Müdür"))
+                                            {
+                                                <td class="d-none d-md-table-cell">Ayşe-@item.CreatedDate</td>
+                                                <td class="d-none d-md-table-cell">Sefa-@item.UpdatedDate</td>
+                                            }
+
+                                            @if (item.Condition == true)
+                                            {
+                                                <td><span class="badge bg-success">Aktif</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge bg-danger">Pasif</span></td>
+                                            }
+
+                                            <td>
+                                                <a href="/Class/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+
+                                                <form asp-controller="Class" asp-action="Delete" method="post" style="display:inline" id="myForm_@item.Id">
+                                                    <input type="hidden" name="id" value="@item.Id" />
+                                                    <button class="btn" style="" onclick="myFunction(event, @item.Id)">
+                                                        <i data-feather="trash-2" style="color: red;"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    @await Component.InvokeAsync("ClassForm")
+</main>
+
+
+

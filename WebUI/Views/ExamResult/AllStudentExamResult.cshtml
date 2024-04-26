@@ -1,0 +1,120 @@
+﻿@model WebUI.Models.ScorListModel
+@{
+    ViewData["Title"] = "AllStudentExamResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+    int count = Model.scors.Count(); // Toplam öğrenci sayısı
+    int firstThree = 3; // İlk üç öğrenci sayısı
+    int lastThree = count - firstThree; // Son üç öğrenci sayısı
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3"><strong>Sınav</strong> Analizim</h1>
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+
+                        <div class="card flex-fill col-12 " style="border-radius: 25px;box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+
+                            <div class="row d-flex">
+                                <div class="card-header col-9">
+                                    <h5 class="card-title mb-0">Sınav Bilgileri</h5>
+                                </div>
+                                <div class="card-header col-3">
+                                    <h5 class="card-title mb-0">Doğru Yanlış Tablosu</h5>
+                                </div>
+                                @section Scripts{
+                                    <script>
+                                        const ctx = document.getElementById('myChart');
+
+                                        new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: ['Doğru Sayısı', 'Yanlış Sayısı', 'Boş Sayısı'],
+                                                datasets: [{
+                                                    label: '',
+                                                    data: [2, 3, 4],
+                                                    backgroundColor: [
+                                                        'blue', // doğru
+                                                        'red', // yanlış
+                                                        'orange', // boş
+                                                    ],
+                                                    borderWidth: 2
+                                                }]
+                                            },
+                                            options: {}
+                                        });
+                                    </script>
+                                }
+
+                            </div>
+
+                            <div class="row d-flex">
+                                @await Component.InvokeAsync("ExamInfo")
+                                @await Component.InvokeAsync("ExamResultPercentile")
+                                <div class="col-lg-2">
+                                    <canvas width="150px" height="150px" id="myChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12  d-flex">
+                                <div class="card flex-fill">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <h5 class="card-title mb-0"> Başarı Sıralama</h5>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <table class="table table-hover my-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Sıra</th>
+                                                <th class="">İsim</th>
+                                                <th class="">Soyisim</th>
+                                                <th class="">Doğru Sayısı</th>
+                                                <th class="">Yanlış Sayısı</th>
+                                                <th class="">Boş Sayısı</th>
+                                                <th class="">Net </th>
+                                                <th class="">Başarı Oranı</th>
+                                                <th class=""></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.scors.OrderByDescending(s => s.Scor))
+                                            {
+                                                <tr >
+                                                    <td><span class="badge" style="@(counter <= firstThree ? "background-color: orange;" : (counter > lastThree ? "background-color: red;" : ""))">@counter</span></td>
+                                                    <td class="">@item.User.Name </td>
+                                                    <td class="">@item.User.SurName</td>
+                                                    <td class="">@item.True</td>
+                                                    <td class="">@item.False</td>
+                                                    <td class="">@item.Null</td>
+                                                    <td class="">@item.Average</td>
+                                                    <td class="">@item.Scor%</td>
+                                                    <td>
+                                                        <form method="post" action="/ExamResult/ExamScor/@item.Exam.Id">
+                                                            <input type="hidden" name="UserId" value="@item.User.Id">
+                                                            <button class="btn btn-primary" type="submit">Detay</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                counter++;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

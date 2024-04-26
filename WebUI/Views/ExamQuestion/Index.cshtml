@@ -1,0 +1,328 @@
+﻿@model QuestionListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Soru Sayfası</h1>
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="page-search">
+                            <div class="search-place">
+                                <button data-feather="arrow-left"></button>
+                                <span><strong>Matematik Sınavı-1</strong></span>
+                                <button data-feather="arrow-right"></button>
+                            </div>
+                            <h1 class="text-center"> Sınavı Soruları</h1>
+
+                        </div>
+
+                        @if (ViewBag.btnCondition == true)
+                        {
+                            <form asp-controller="ExamQuestion" asp-action="Update" method="post">
+                                <div class="text-center">
+                                    <button class="yetkili_btn" type="submit"><strong>Gücelle</strong></button>
+                                </div>
+                                <div class="questions-container">
+
+                                    <input name="ExamId" type="hidden" value="@ViewBag.ExamId" />
+                                    @foreach (var item in Model.Questions)
+                                    {
+                                        <div class="question-content">
+                                            <input type="checkbox" name="questionIds" value="@item.Id" style="position:left;" onclick="changeProp(this)" @(Model.SelectedQuestions.Contains(item.Id) ? "checked" : "")>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <h4><strong>Soru-@item.Id</strong></h4>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @if (item.Level.Name == "Kolay")
+                                                    {
+                                                        <h5 class="text-center" style="background-color:yellowgreen;border-radius:10px"><strong style="color:white">Kolay</strong></h5>
+                                                    }
+                                                    else if (item.Level.Name == "Orta")
+                                                    {
+                                                        <h5 class="text-center" style="background-color:orange;border-radius:10px"><strong style="color:white">Orta</strong></h5>
+                                                    }
+                                                    else
+                                                    {
+                                                        <h5 class="text-center" style="background-color:red;border-radius:10px"><strong style="color:white">Zor</strong></h5>
+                                                    }
+                                                    <h4><strong></strong></h4>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a href="" id="question-review-icon">
+                                                        <i class="bi bi-pencil-square">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                            </svg>
+                                                        </i>
+                                                    </a>
+                                                </div>
+                                                @if (item.ImageUrl != null)
+                                                {
+                                                    <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
+                                                }
+
+                                                <input type="hidden" name="Condition" value="True" />
+                                                <span>@item.Text</span>
+                                                <span class="question-info"><strong>@item.QuestionText?</strong></span>
+                                                <div class="question-answer-list">
+                                                    @foreach (var option in item.Options.Where(x => x.QuestionId == item.Id).ToList())
+                                                    {
+                                                        <span><strong>@option.Name)</strong> @option.Text</span>
+
+                                                        <br>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </div>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-controller="ExamQuestion" asp-action="Create" method="post">
+                                <div class="text-center">
+                                    <button class="yetkili_btn" type="submit"><strong>Soruları Ekle</strong></button>
+                                </div>
+                                <div class="questions-container">
+
+                                    <input name="ExamId" type="hidden" value="@ViewBag.ExamId" />
+                                    @foreach (var item in Model.Questions)
+                                    {
+                                        <div class="question-content">
+                                            <input type="checkbox" name="questionIds" value="@item.Id" style="position:left;" onclick="changeProp(this)" @(Model.SelectedQuestions.Contains(item.Id) ? "checked" : "")>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <h4><strong>Soru-@item.Id</strong></h4>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @if (item.Level.Name == "Kolay")
+                                                    {
+                                                        <h5 class="text-center" style="background-color:yellowgreen;border-radius:10px"><strong style="color:white">Kolay</strong></h5>
+                                                    }
+                                                    else if (item.Level.Name == "Orta")
+                                                    {
+                                                        <h5 class="text-center" style="background-color:orange;border-radius:10px"><strong style="color:white">Orta</strong></h5>
+                                                    }
+                                                    else
+                                                    {
+                                                        <h5 class="text-center" style="background-color:red;border-radius:10px"><strong style="color:white">Zor</strong></h5>
+                                                    }
+                                                    <h4><strong></strong></h4>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a href="" id="question-review-icon">
+                                                        <i class="bi bi-pencil-square">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                            </svg>
+                                                        </i>
+                                                    </a>
+                                                </div>
+                                                @if (item.ImageUrl != null)
+                                                {
+                                                    <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
+                                                }
+
+                                                <input type="hidden" name="Condition" value="True" />
+                                                <span>@item.Text</span>
+                                                <span class="question-info"><strong>@item.QuestionText?</strong></span>
+                                                <div class="question-answer-list">
+                                                    @foreach (var option in item.Options.Where(x => x.QuestionId == item.Id).ToList())
+                                                    {
+                                                        <span><strong>@option.Name)</strong> @option.Text</span>
+
+                                                        <br>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </div>
+                            </form>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div class="modal-content" id="modal-content1">
+                <div class="row d-flex">
+                    <div class="col-10">
+                        <h3 class="modal-title col-10"><strong> Soru Ekle</strong></h3>
+                    </div>
+                    <div class="col-2">
+                        <span class="close">&times;</span>
+                    </div>
+
+
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row d-flex">
+                                <label for="Ders" class="col-sm-2 col-form-label ">İsmi</label>
+                                <div class="col-sm-10">
+                                    <input class="form-dropdown text-center" type="text" placeholder="Örneğin:1">
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown">
+                                        <option value="">Matematik</option>
+                                        <option value="">Coğrafya</option>
+                                        <option value="">Tarih</option>
+                                    </select>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Konular</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown">
+                                        <option value="">Üslü Sayılar</option>
+                                        <option value="">Akdeniz</option>
+                                        <option value="">Kurtuluş Savaşı</option>
+                                    </select>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown">
+                                        <option value="">Kolay</option>
+                                        <option value="">Orta</option>
+                                        <option value="">Zor</option>
+                                    </select>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown">
+                                        <option value="">Ders Çıktısı-1</option>
+                                        <option value="">Ders Çıktısı-2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="big-text d-flex ">
+                                <h5>
+                                    <strong>Soru Metini:</strong> </h4><br>
+
+                                    <textarea id="big-text" class="input"></textarea>
+                            </div>
+                            <input type="file" id="fileUpload">
+                        </div>
+                    </div>
+                </form>
+                <button id="upper" class="upper_btn">
+                    <strong>İlerle </strong>
+                </button>
+            </div>
+            <div class="modal-content2" id="modal-content2">
+                <span class="close"></span>
+                <h2><strong> Soru Cevabı Ekleme Alanı</strong></h2>
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row d-flex">
+                                <label for="Ders" class="col-sm-2 col-form-label ">A:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1"><br>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label ">B:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1"><br>
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label ">C:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1">
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label ">D:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1">
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label ">E:</label>
+                                <div class="col-sm-10">
+                                    <input class="answer-place text-center" type="text" placeholder="Örneğin:1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <button id="lower_btn" class="upper_btn">
+                    <strong>Geri Dön</strong>
+                </button>
+                <button id="cls_btn" class="upper_btn ">
+                    <strong>Kaydet </strong>
+                </button>
+
+            </div>
+
+
+            <!-- </div>
+            <div class="modal-content3" id="modal-content3">
+                <span class="close">&times;</span>
+                <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
+
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        <div class="modal-form-container">
+                            <div class="question-text">
+                                Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                                    yüzyılda yaşamış bir tarihçi ve aynı
+                                   zamanda bir askerdir. Atina’da doğmuştur.
+                                   Tukididis, Atina ve Sparta arasındaki Peloponnes
+                                   Savaşı boyunca (M.Ö. 431 – 404)
+                                   Trakya’daki Amfipolis şehrini korumakla görevlendirilen
+                                   donanmanın komutanıydı.
+                                   Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
+                                   general Brasidas’ın eline
+                                   geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
+                                   zorunda kaldı. Bu sürgün,
+                                    Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
+                                   Peloponnes Savaşı’nın
+                                   Tarihi adlı çalışması için araştırma yapma imkânı verdi.
+                                                                               Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
+                                   general Brasidas’ın eline
+                                   geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
+                                   zorunda kaldı. Bu sürgün,
+                                    Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
+                                   Peloponnes Savaşı’nın
+                                   Tarihi adlı çalışması için araştırma yapma imkânı verdi.
+                            </div>
+                            <div class="big-text d-flex">
+                                <h5><strong>Çözüm Metini:</strong> </h4><br>
+                                <input class="big-text"type="text" placeholder="Soru İçeriğini giriniz">
+                            </div>
+
+
+                        </div>
+                        <td>
+                            <button id="" class="upper_btn" >
+                                <strong >İlerle </strong>
+                            </button><br>
+                        </td>
+
+
+                    </tbody>
+
+
+
+            </div> -->
+        </div>
+    </div>
+</main>
+
